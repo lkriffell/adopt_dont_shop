@@ -95,7 +95,7 @@ BE Mod 2 Week 1 Solo Project
 ## User Stories
 
 ```
-[ ] done
+[ X ] done
 
 User Story 1, Deploy your application to Heroku
 
@@ -110,7 +110,7 @@ the application must be hosted on Heroku.
 Shelters are organizations that have pets available for adoption.
 
 ```
-[ ] done
+[ X ] done
 
 User Story 2, Shelter Index
 
@@ -120,7 +120,7 @@ Then I see the name of each shelter in the system
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 3, Shelter Show
 
@@ -135,7 +135,7 @@ Then I see the shelter with that id including the shelter's:
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 4, Shelter Creation
 
