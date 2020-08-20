@@ -1,0 +1,11 @@
+<h2><%= @pet.name %></h2>
+
+<img src=<%= "../../assets/#{@pet.image}" %> width = 250px>
+<ul>
+  <li>Age: <%= @pet.approximate_age %></li>
+  <li>Sex: <%= @pet.sex %></li>
+  <li>Current Location: <%= @pet.current_location %></li>
+  <li>Adoption Status: <%= @pet.adoption_status %></li>
+</ul>
+<h3><a href="http://localhost:3000/pets/<%= @pet.id %>/edit">Update Pet</a></h3>
+<h3><a href="http://localhost:3000/pets/<%= @pet.id %>/delete">Delete Pet</a></h3>
