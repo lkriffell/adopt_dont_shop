@@ -2,6 +2,8 @@
 
 <% @shelters.each do |shelter| %>
   <h2><%= shelter.name %></h2>
+  <h4><a href="http://localhost:3000//shelters/<%= shelter.id %>/edit">Update Shelter</a></h4>
+  <h4><a href="http://localhost:3000//shelters/<%= shelter.id %>/delete">Delete Shelter</a></h4>
 <% end %>
 
 <h3><a href="http://localhost:3000/shelters/new">New Shelter</a></h3>
