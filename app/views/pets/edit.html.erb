@@ -1,0 +1,18 @@
+<%= form_tag ("/pets/#{@pet.id}") do %>
+  <label>Name:</label><br>
+  <%= text_field_tag :'pet[name]', @pet.name %><br>
+
+  <label>Approximate Age:</label><br>
+  <%= text_field_tag :'pet[approximate_age]', @pet.approximate_age %><br>
+
+  <label>Sex:</label><br>
+  <%= text_field_tag :'pet[sex]', @pet.sex %><br>
+
+  <label>Image:</label><br>
+  <%= text_field_tag :'pet[image]', @pet.image %><br>
+
+  <label>Pet ID:</label><br>
+  <%= text_field_tag :'pet[:id]', @pet.id %><br>
+
+  <%= submit_tag "Update Pet" %>
+<% end %>
