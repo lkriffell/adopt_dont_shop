@@ -32,19 +32,14 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:id])
-    if params[:pet][:name] != ""
-      @pet.update({ name: params[:pet][:name] })
-    elsif params[:pet][:approximate_age] != ""
-      @pet.update({ approximate_age: params[:pet][:approximate_age] })
-    elsif params[:pet][:sex] != ""
-      @pet.update({ sex: params[:pet][:sex] })
-    elsif params[:pet][:current_location] != ""
-      @pet.update({ current_location: params[:pet][:current_location] })
-    elsif params[:pet][:image] != ""
-      @pet.update({ image: params[:pet][:image] })
-    end
-
-      @pet.save
+      @pet.update({
+        name: params[:pet][:name],
+        approximate_age: params[:pet][:approximate_age],
+        sex: params[:pet][:sex],
+        current_location: params[:pet][:current_location],
+        image: params[:pet][:image]
+      })
+      @pet.save!
       redirect_to "/pets/#{@pet.id}"
   end
 
