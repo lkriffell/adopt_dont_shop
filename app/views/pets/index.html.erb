@@ -3,7 +3,7 @@
     <% @pets.each do |pet| %>
       <div class="pet">
         <div class="petlinks">
-          <h4><a href="http://localhost:3000/pets/<%= pet.id %>/edit">Update Pet</a></h4>
+          <h4><a href="/pets/<%= pet.id %>/edit">Update Pet</a></h4>
 
           <h4 id="deletelink"><%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %><br></h4>
         </div>
@@ -13,10 +13,10 @@
       <%= image_tag pet.image %>
 
       <ul id="petlist">
-        <li>name: <a href="http://localhost:3000//pets/<%= pet.id %>"><%= pet.name %></a></li>
+        <li>name: <a href="/pets/<%= pet.id %>"><%= pet.name %></a></li>
         <li>Age: <%= pet.approximate_age %></li>
         <li>Sex: <%= pet.sex %></li>
-        <li>Current Location: <a href="http://localhost:3000//shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
+        <li>Current Location: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
       </ul>
 
       </div>
