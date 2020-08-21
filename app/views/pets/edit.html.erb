@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_tag ("/pets/#{@pet.id}") do %>
   <label>Name:</label><br>
   <%= text_field_tag :'pet[name]', @pet.name %><br>
@@ -11,8 +12,8 @@
   <label>Image:</label><br>
   <%= text_field_tag :'pet[image]', @pet.image %><br>
 
-  <label>Pet ID:</label><br>
-  <%= text_field_tag :'pet[:id]', @pet.id %><br>
+  <%= hidden_field_tag :'pet[:id]', @pet.id %><br>
 
-  <%= submit_tag "Update Pet" %>
+  <%= submit_tag "Update Pet" %><br><br>
 <% end %>
+</div>

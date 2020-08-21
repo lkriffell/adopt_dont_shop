@@ -1,4 +1,6 @@
-<%= form_tag('/shelters', method: :patch) do %>
+<div class="form">
+
+<%= form_tag("/shelters/#{@shelter.id}", method: :patch) do %>
   <label>name:</label><br>
   <%= text_field_tag :'shelter[name]', @shelter.name %><br>
 
@@ -14,8 +16,8 @@
   <label>zip:</label><br>
   <%= text_field_tag :'shelter[zip]', @shelter.zip %><br>
 
-  <label>Shelter ID:</label><br>
-  <%= text_field_tag :'shelter[id]', @shelter.id%><br>
+  <%= hidden_field_tag :'shelter[id]', @shelter.id%><br>
 
-  <%= submit_tag "Update Shelter" %>
+  <%= submit_tag "Update Shelter" %><br><br>
 <% end %>
+</div>

@@ -1,3 +1,4 @@
+<div class="form">
   <%= form_tag ('/shelters') do %>
     <label>name:</label><br>
     <%= text_field_tag :'shelter[name]' %><br>
@@ -12,7 +13,8 @@
     <%= text_field_tag :'shelter[state]' %><br>
 
     <label>zip:</label><br>
-    <%= text_field_tag :'shelter[zip]' %><br>
+    <%= text_field_tag :'shelter[zip]' %><br><br>
 
-    <%= submit_tag "Create Shelter" %>
+    <%= submit_tag "Create Shelter" %><br><br>
   <% end %>
+</div>
