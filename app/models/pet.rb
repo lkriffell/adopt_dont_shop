@@ -5,7 +5,7 @@ class Pet < ApplicationRecord
   validates_presence_of :sex
   validates_presence_of :approximate_age
   validates_presence_of :image
-  validates_presence_of :adoption_status
-  validates_presence_of :current_location
-  validates_presence_of :shelter_id
+  # validates_presence_of :adoption_status
+  # validates_presence_of :current_location
+  # validates_presence_of :shelter_id
 end
