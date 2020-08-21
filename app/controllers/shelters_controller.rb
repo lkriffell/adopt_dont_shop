@@ -27,21 +27,17 @@ class SheltersController < ApplicationController
   end
 
   def update
-    shelter = Shelter.find(params[:shelter][:id])
-    if params[:shelter][:name] != ""
-      shelter.update({ name: params[:shelter][:name] })
-    elsif params[:shelter][:address] != ""
-      shelter.update({ address: params[:shelter][:address] })
-    elsif params[:shelter][:city] != ""
-      shelter.update({ city: params[:shelter][:city] })
-    elsif params[:shelter][:state] != ""
-      shelter.update({ state: params[:shelter][:state] })
-    elsif params[:shelter][:zip] != ""
-      shelter.update({ zip: params[:shelter][:zip] })
-    end
+    @shelter = Shelter.find(params[:shelter][:id])
 
-    shelter.save
-    redirect_to "/shelters/#{shelter.id}"
+      @shelter.update({
+        name: params[:shelter][:name],
+        address: params[:shelter][:address],
+        city: params[:shelter][:city],
+        state: params[:shelter][:state],
+        zip: params[:shelter][:zip]
+      })
+    @shelter.save
+    redirect_to "/shelters/#{@shelter.id}"
   end
 
   def destroy
@@ -51,11 +47,9 @@ class SheltersController < ApplicationController
 
   def show_pets
     @shelter = Shelter.find(params[:id])
-    @pets_at_location = []
-    Pet.all.each do |pet|
-      if pet.shelter_id == @shelter.id
-        @pets_at_location << pet
-      end
+    @pets_at_location =
+    Pet.all.find_all do |pet|
+      pet.shelter_id == @shelter.id
     end
   end
 end
