@@ -4,7 +4,7 @@
 
 <h2 id="upforadoption">Up For Adoption At <%= "#{@shelter.name}" %></h2>
 
-<% @pets_at_location.each do |pet| %>
+<%= @pets_at_location.each do |pet| %>
 <div class="pet">
   <div class="petlinks">
     <h4><a href="/pets/<%= pet.id %>/edit">Update Pet</a></h4>
