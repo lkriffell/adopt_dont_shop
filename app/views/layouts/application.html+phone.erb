@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AdoptDontShop</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag    'mobileStyles', media: 'only screen and (max-device-width: 960)' %>
+    <%= javascript_include_tag 'application' %>
+
+  </head>
+  <div id="borderimg">
+    <ul id="nav">
+      <li id="navlink"><h3><%= link_to 'Pet Index', '/pets' %></h3></li>
+      <li id="navlink"><h3><%= link_to 'Shelter Index', '/shelters' %></h3></li>
+    </ul>
+
+
+  <body>
+    <%= yield %>
+  </body>
+  </div>
+</html>
