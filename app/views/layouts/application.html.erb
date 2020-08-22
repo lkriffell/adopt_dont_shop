@@ -7,7 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <link rel="mobileStyles" media="screen and (min-device-width: 800px)" href="800.css" />
+    <%= stylesheet_link_tag    'mobileStyles', media: 'screen and (max-device-width: 320px)' %>
+
   </head>
   <div id="borderimg">
     <ul id="nav">
