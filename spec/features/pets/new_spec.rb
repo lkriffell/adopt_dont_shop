@@ -23,6 +23,7 @@ RSpec.describe 'new pet' do
 
     click_on "Create Pet"
 
+    #Test pet was created
     expect(current_path).to eq("/shelters/#{@shelter1.id}/pets")
     expect(page).to have_content("Jimbo")
     expect(page).to have_content(2)
@@ -30,5 +31,9 @@ RSpec.describe 'new pet' do
     expect(page).to have_xpath("//img['jimbo.jpg']")
 
     Pet.all.includes(Pet.last)
+
+    #Test pet can be deleted
+    click_on "Delete Pet"
+    !Pet.all.includes(Pet.last)
   end
 end

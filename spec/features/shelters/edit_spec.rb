@@ -3,11 +3,14 @@ require 'rails_helper'
 # Before each for setup
 RSpec.describe 'shelters edit page' do
   before :each do
+    @shelter1 = Shelter.create!(name: "Alfredo's Adoption",
+                                address: "55555",
+                                city: "Denver",
+                                state: "CO",
+                                zip: "34213")
   end
 
   it 'displays edit shelter form' do
-    @shelter1 = Shelter.create(name: "Alfredo's Adoption", address: "55555",
-                              city: "Denver", state: "CO", zip: "34213")
     visit "/shelters/#{@shelter1.id}/edit"
 
     expect(page).to have_content("name")
@@ -15,6 +18,20 @@ RSpec.describe 'shelters edit page' do
     expect(page).to have_content("city")
     expect(page).to have_content("state")
     expect(page).to have_content("zip")
+
+    fill_in :'shelter[name]', with: "bobby john's adoption"
+    fill_in :'shelter[address]', with: 55837
+    fill_in :'shelter[city]', with: "Denver"
+    fill_in :'shelter[state]', with: "CO"
+
+    click_on "Update Shelter"
+
+    # Test it saves updated info
+    expect(current_path).to eq("/shelters/#{@shelter1.id}")
+    expect(page).to have_content("bobby john's adoption")
+    expect(page).to have_content(55837)
+    expect(page).to have_content("Denver")
+    expect(page).to have_content("CO")
 
   end
 end
