@@ -5,10 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <meta name="viewport" content="width=device-width; initial-scale=1.0;">
     <link rel="stylesheet" href="mobileStyles.css" />
+    <%= stylesheet_link_tag    'application', media: "screen and (min-device-width: 800px)" %>
+    <%= javascript_include_tag 'application' %>
 
   </head>
   <div id="borderimg">
