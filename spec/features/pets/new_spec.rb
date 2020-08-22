@@ -3,11 +3,11 @@ require 'rails_helper'
 # Before each for setup
 RSpec.describe 'new pet' do
   before :each do
+    @shelter1 = Shelter.create!(name: "Alfredo's Adoption", address: "55555",
+      city: "Denver", state: "CO", zip: "34213")
   end
 
-  it 'displays new pet form' do
-    @shelter1 = Shelter.create(name: "Alfredo's Adoption", address: "55555",
-                              city: "Denver", state: "CO", zip: "34213")
+  it 'displays new pet form and creates a pet' do
     visit "/shelters/#{@shelter1.id}/pets/new"
 
     expect(page).to have_content("Name")
@@ -16,7 +16,18 @@ RSpec.describe 'new pet' do
     expect(page).to have_content("Image")
     expect(page).to have_content("Status")
     expect(page).to have_content("Location")
-    expect(page).to have_content("Shelter ID")
 
+    fill_in :'pet[name]', with: "Jimbo"
+    fill_in :'pet[approximate_age]', with: 2
+    fill_in :'pet[sex]', with: "male"
+    fill_in :'pet[image]', with: "jimbo.jpg"
+
+    click_on "Create Pet"
+
+    expect(current_path).to eq("/shelters/#{@shelter1.id}/pets")
+    expect(page).to have_content("Jimbo")
+    expect(page).to have_content(2)
+    expect(page).to have_content("male")
+    expect(page).to have_xpath("//img['jimbo.jpg']")
   end
 end
