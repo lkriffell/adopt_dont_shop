@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'rails_helper'
-# Before each for setup
 RSpec.describe 'new pet' do
   before :each do
     @shelter1 = Shelter.create!(name: "Alfredo's Adoption", address: "55555",
@@ -29,5 +28,7 @@ RSpec.describe 'new pet' do
     expect(page).to have_content(2)
     expect(page).to have_content("male")
     expect(page).to have_xpath("//img['jimbo.jpg']")
+
+    Pet.all.includes(Pet.last)
   end
 end
