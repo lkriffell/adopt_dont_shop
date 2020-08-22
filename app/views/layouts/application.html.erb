@@ -4,9 +4,11 @@
     <title>AdoptDontShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0;">
-    <%= stylesheet_link_tag    'mobileStyles', media: "screen and (max-device-width: 800px)" %>
+    <link rel="stylesheet" href="app/assets/stylesheets/mobileStyles.css" media: "screen and (max-device-width: 800px)" />
+
     <%= stylesheet_link_tag    'application', media: "screen and (min-device-width: 800px)" %>
     <%= javascript_include_tag 'application' %>
 
