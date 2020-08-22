@@ -23,10 +23,14 @@ RSpec.describe 'pets index' do
 
     expect(page).to have_content("All Pets")
     expect(page).to have_content(@pet1.name)
+    expect(page).to have_link("#{@pet1.name}", href: "/pets/#{@pet1.id}")
     expect(page).to have_content(@pet1.approximate_age)
     expect(page).to have_content(@pet1.sex)
     expect(page).to have_content(@pet1.current_location)
+    expect(page).to have_link("#{@pet1.current_location}", href: "/shelters/#{@shelter1.id}")
     expect(page).to have_xpath("//img['jimbo.jpg']")
+    expect(page).to have_link("Update Pet", href: "/pets/#{@pet1.id}/edit")
+    expect(page).to have_link("Delete Pet", href: "/pets/#{@pet1.id}")
 
   end
 end
