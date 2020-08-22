@@ -1,0 +1,98 @@
+body {
+ font-family: monospace, Helvetica, sans-serif;
+ margin: 150px;
+ margin-top: 75px;
+ background-color: beige;
+}
+
+div#borderimg{
+  border-width: 50px;
+  border-style: solid;
+  border-image: url(https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/3/fenced-into-seattle-matt-mcdonald.jpg) 30 round;
+}
+
+ul#nav{
+  color: #eb67bf;
+  background-color: pink;
+  list-style-type: none;
+  margin: 5px;
+  display: flex;
+  padding-right: 10px;
+  font-family: fantasy;
+}
+
+li#navlink:hover {
+  background-color: #ed9fe7;
+}
+
+li#navlink{
+  padding: 10px;
+}
+
+img:hover {
+  background-color: pink;
+}
+
+img{
+  border: 1px solid #833ed6;
+  border-radius: 8px;
+  padding: 5px;
+  width: 250px;
+}
+
+.pet {
+  display: flex;
+  padding-left: 100px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #e3ddb3;
+  border: 50px;
+  list-style-type: none;
+}
+
+ .petlinks {
+   padding-left: 30px;
+   padding-top: 30px;
+   text-align: center;
+   display: inline-grid;
+ }
+
+
+ ul#petlist {
+   padding-top: 20px;
+ }
+
+ h1{
+   color: #833ed6;
+   text-align: center;
+   font-family: fantasy;
+ }
+
+ h1#sheltername{
+   font-family: monospace;
+ }
+
+ h4#shelterlinks{
+   font-family: monospace;
+   text-align: center;
+ }
+
+ .form{
+   text-align: center;
+ }
+
+ div#shelterinfo{
+   text-align: center;
+ }
+
+ div#showpet{
+   padding-left: 250px;
+ }
+
+ h2#petname{
+   padding-left: 100px;
+ }
+
+ h2#upforadoption{
+   padding-left: 100px;
+ }
