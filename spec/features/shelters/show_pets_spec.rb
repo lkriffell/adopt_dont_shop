@@ -21,10 +21,15 @@ RSpec.describe 'shelters show page' do
   it 'displays pet attributes' do
     visit "/shelters/#{@shelter1.id}/pets"
 
+    expect(page).to have_content("Up For Adoption At")
     expect(page).to have_content(@shelter1.name)
     expect(page).to have_content(@pet1.name)
     expect(page).to have_content(@pet1.approximate_age)
     expect(page).to have_content(@pet1.sex)
+    expect(page).to have_link("#{@pet1.name}", href: "/pets/#{@pet1.id}")
+    expect(page).to have_link("Update Pet", href: "/pets/#{@pet1.id}/edit")
+    expect(page).to have_link("Delete Pet", href: "/pets/#{@pet1.id}")
+
 
   end
 end
