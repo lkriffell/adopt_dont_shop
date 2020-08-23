@@ -3,6 +3,7 @@
 </ul>
 
 <h2 id="upforadoption">Up For Adoption At <%= "#{@shelter.name}" %></h2>
+<h3 id="upforadoptioncount">pets located here: <%= @pets_at_location.count %></h3>
 
 <% @pets_at_location.each do |pet| %>
 <div class="pet">
