@@ -417,7 +417,7 @@ Then I should see a reasonably well styled page
 ## Extensions
 
 ```
-[ ] done
+[ X ] done
 
 User Story 23, Shelter Pet Count
 
