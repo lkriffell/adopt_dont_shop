@@ -1,0 +1,19 @@
+<div class="form">
+  <%= flash[:alert] %>
+  
+  <%= form_tag ("/shelters/#{@shelter.id}") do %>
+    <label>Title:</label><br>
+    <%= text_field_tag :'title' %><br>
+
+    <label>Rating (out of 5):</label><br>
+    <%= text_field_tag :'rating' %><br>
+
+    <label>Content:</label><br>
+    <%= text_field_tag :'content' %><br>
+
+    <label>Image (optional):</label><br>
+    <%= text_field_tag :'image' %><br>
+
+    <%= submit_tag "Submit Review" %><br><br>
+  <% end %>
+</div>
