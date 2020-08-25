@@ -16,6 +16,14 @@
 
   <h1>Shelter Reviews</h1>
     <div id="shelterreviews">
-    <h2> Title: </h2>
-    <h2> Rating: </h2>
-    <h2> Content: </h2> 
+      <% @shelter.reviews.each do |review| %>
+      <h2> Title: <%= review.title %></h2>
+      <h2> Rating: <%= review.rating %></h2>
+      <h2> Content: <%= review.content %></h2>
+      <% if review.image != nil %>
+      <%= image_tag "#{review.image}" %>
+      <% end %>
+    <% end %>
+
+
+    <h4><%= link_to "Add Review", "/shelters/#{@shelter.id}/new" %> </h4>
