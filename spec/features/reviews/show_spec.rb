@@ -43,6 +43,8 @@ RSpec.describe 'Review show page' do
 
       expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
+      click_on "Delete Review"
+      expect(page).to_not have_content("Terrible Service")
 
     end
 end
