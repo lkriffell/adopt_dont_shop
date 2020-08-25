@@ -1,0 +1,20 @@
+<div class="form">
+  <%= flash[:alert] %>
+
+<%= form_tag("/shelters/#{@shelter.id}/#{@review.id}", method: :patch) do %>
+  <label>Title:</label><br>
+  <%= text_field_tag :title, @review.title %><br>
+
+  <label>Rating (out of 5): </label><br>
+  <%= text_field_tag :rating, @review.rating %><br>
+
+  <label>Content:</label><br>
+  <%= text_field_tag :content, @review.content %><br>
+
+  <label>Image(optional):</label><br>
+  <%= text_field_tag :image, @review.image %><br>
+  <%= hidden_field_tag :id, @review.shelter_id %><br>
+
+  <%= submit_tag "Update Review" %><br><br>
+<% end %>
+</div>
