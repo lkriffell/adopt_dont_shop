@@ -60,21 +60,21 @@ Students will be put into pairs to complete the project.
 This project builds off of the solo project, Adopt Don't Shop. Between you and your partner, choose which one of your repos you'd like to use. If you choose to use Partner A's solo project, Partner A will clone their project into a new directory and push up to a new repo on github. Then, Partner A should add Partner B as a collaborator to that project.
 
 ## Suggested Timeline
-- Monday: 1-4 
+- Monday: 1-4
 - Tuesday: 2-7
-- Wednesday: 8-11 
+- Wednesday: 8-11
 - Thursday: 9-10
-- Friday: 12-15 
-- Weekend: 16-25 
-- Monday: 26-30 
-- Tuesday: 31-33 
-- Wednesday: 34-36 
+- Friday: 12-15
+- Weekend: 16-25
+- Monday: 26-30
+- Tuesday: 31-33
+- Wednesday: 34-36
 
 
 ## User Stories
 
 ```
-[ ] done
+[ X ] done
 
 User Story 1, Deploy your application to Heroku
 
@@ -90,7 +90,7 @@ the application must be hosted on Heroku.
 Users will be able to share their experiences with a shelter through providing reviews. Users should be able to create a review with a title (Example: "Awesome place!"), a rating (out of 5), and content (Example: "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!"). A user can also upload one picture (image url address) for their review as well, but this is optional.
 
 ```
-[ ] done
+[ X ] done
 
 User Story 2, Shelter Reviews
 
@@ -105,7 +105,7 @@ Each review will have:
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 3, Shelter Review Creation
 
@@ -123,7 +123,7 @@ and I can see my new review
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 4, Shelter Review Creation, cont.
 
