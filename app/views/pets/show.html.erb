@@ -1,4 +1,5 @@
 <h2 id="petname"><%= @pet.name %></h2>
+<%= flash[:notice] %>
 <% shelter = Shelter.find(@pet.shelter_id)%>
 
 <div id="showpet">
@@ -10,5 +11,7 @@
     <li>Adoption Status: <%= @pet.adoption_status %></li>
   </ul>
 </div>
+  <%= link_to "Favorite Pet", "/pets/#{@pet.id}" %><br>
   <h4><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h4>
+
   <%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %><br>
