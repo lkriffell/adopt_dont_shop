@@ -261,6 +261,10 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -274,6 +278,7 @@
         "lines": [
           1,
           1,
+          1,
           null,
           1,
           1,
@@ -285,6 +290,17 @@
       },
       "/Users/fieldstyler/turing/2mod/paired_projects/adopt_dont_shop/app/models/application_record.rb": {
         "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/fieldstyler/turing/2mod/paired_projects/adopt_dont_shop/app/models/review.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
           1,
           1,
           null
@@ -352,24 +368,57 @@
       "/Users/fieldstyler/turing/2mod/paired_projects/adopt_dont_shop/app/controllers/application_controller.rb": {
         "lines": [
           1,
+          null
+        ]
+      },
+      "/Users/fieldstyler/turing/2mod/paired_projects/adopt_dont_shop/app/controllers/reviews_controller.rb": {
+        "lines": [
           1,
           null,
           1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
           null,
           1,
           2,
+          2,
           null,
-          0,
           null,
-          0,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
           null,
-          0,
+          1,
           null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          2,
           null,
           null
         ]
       }
     },
-    "timestamp": 1598311598
+    "timestamp": 1598378166
   }
 }

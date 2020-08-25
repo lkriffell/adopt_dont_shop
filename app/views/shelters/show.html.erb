@@ -18,11 +18,12 @@
     <div id="shelterreviews">
       <% @shelter.reviews.each do |review| %>
       <h2> Title: <%= review.title %></h2>
-      <h2> Rating: <%= review.rating %></h2>
+      <h2> Rating (out of 5): <%= review.rating %></h2>
       <h2> Content: <%= review.content %></h2>
       <% if review.image != nil %>
       <%= image_tag "#{review.image}" %>
       <% end %>
+      <h2><%= link_to "Edit Review", "/shelters/#{@shelter.id}/#{review.id}/edit" %> </h2>
     <% end %>
 
 
