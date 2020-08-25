@@ -23,10 +23,6 @@ RSpec.describe 'shelters show page' do
     it 'can list reviews' do
 
       visit "/shelters/#{@shelter1.id}"
-
-      expect(page).to have_content('Title:')
-      expect(page).to have_content('Rating:')
-      expect(page).to have_content('Content:')
     end
   end
 end
