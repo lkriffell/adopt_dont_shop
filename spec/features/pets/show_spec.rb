@@ -16,7 +16,13 @@ RSpec.describe 'pet show' do
                         adoption_status: "Adoptable",
                         current_location: "Alfredo's Adoption",
                         shelter_id: "1")
-    @favorites = [@pet1]
+    @pet2 = Pet.create!(name: "Elmer",
+                        approximate_age: "5",
+                        sex: "male",
+                        image: "elmer.jpg",
+                        adoption_status: "In A Loving Home",
+                        current_location: "Alfredo's Adoption",
+                        shelter_id: "1")
   end
 
   it 'displays pet attributes' do
@@ -60,4 +66,30 @@ RSpec.describe 'pet show' do
 
     expect(page).to have_content("Favorite Pets")
   end
+
+  it 'has a favorite link next to each pet on favorites page' do
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+    visit "/pets/#{@pet2.id}"
+    click_link 'Favorite This Pet'
+    visit "/favorites"
+      within(".showpet-#{@pet1.id}") do
+        expect(page).to have_link('Remove From Favorites')
+      end
+      within(".showpet-#{@pet2.id}") do
+        expect(page).to have_link('Remove From Favorites')
+      end
+  end
+
+  it 'can remove favorite pet from favorites page' do
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+    visit '/favorites'
+
+    click_link "Remove From Favorites"
+    expect(page).to_not have_content("#{@pet1.approximate_age}")
+    # expect(page).to have_content("You have no favorited pets")
+    expect(page).to_not have_link('Remove From Favorites')
+  end
+
 end
