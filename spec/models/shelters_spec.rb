@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Shelter, type: :model do
+describe Shelter do
   before :each do
 
   end

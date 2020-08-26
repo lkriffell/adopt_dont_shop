@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Pet, type: :model do
+describe Pet do
   before :each do
 
   end
