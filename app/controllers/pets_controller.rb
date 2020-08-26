@@ -60,12 +60,29 @@ class PetsController < ApplicationController
     @favorites = Pet.favorited_pets
   end
 
-  def remove_favorite
+  def remove_favorite_from_pets_show
     @pet = Pet.find(params[:id])
     @pet[:favorite] = false
     @pet.save!
     flash[:notice] = "#{@pet.name} has been removed from your favorites list"
     redirect_to "/pets/#{@pet.id}"
+  end
+
+  def remove_favorite_from_favorites
+    @pet = Pet.find(params[:id])
+    @pet[:favorite] = false
+    @pet.save!
+    flash[:notice] = "#{@pet.name} has been removed from your favorites list"
+    redirect_to "/favorites"
+  end
+
+  def remove_all_favorites
+    @favorites = Pet.favorited_pets
+    @favorites.each do |favorite|
+      favorite[:favorite] = false
+      favorite.save!
+    end
+    redirect_to "/favorites"
   end
 
 end

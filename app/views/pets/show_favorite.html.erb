@@ -1,8 +1,16 @@
 <h1>Favorite Pets</h1>
-
+<% if @favorites == [] %>
+<h3><%= "You have no favorited pets" %></h3>
+<% end %>
 <% @favorites.each do |favorite| %>
-  <div id="showpet"> 
+  <div class=<%"showpet-#{favorite.id}"%>> 
      <h3><%= link_to "#{favorite.name}", "/pets/#{favorite.id}" %></h3><br>
      <%= image_tag favorite.image %><br>
+     <%= link_to "Remove From Favorites", "/pets/#{favorite.id}/favorite", method: :delete %><br>
+
   </div>
 <% end %>
+<br>
+<br>
+<br>
+<%= link_to "Remove All Pets From Favorites", "/remove_favorites", method: :delete %><br>
