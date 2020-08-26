@@ -16,10 +16,11 @@ RSpec.describe 'pet show' do
                         adoption_status: "Adoptable",
                         current_location: "Alfredo's Adoption",
                         shelter_id: "1")
+    @favorites = [@pet1]
   end
 
   it 'displays pet attributes' do
-    visit "pets/#{@pet1.id}"
+    visit "/pets/#{@pet1.id}"
 
     expect(page).to have_content(@pet1.name)
     expect(page).to have_content(@pet1.approximate_age)
@@ -30,5 +31,22 @@ RSpec.describe 'pet show' do
     expect(page).to have_link("Update Pet", href: "/pets/#{@pet1.id}/edit")
     expect(page).to have_link("Delete Pet", href: "/pets/#{@pet1.id}")
 
+  end
+
+  it 'has a favorite button' do
+
+    visit "/pets/#{@pet1.id}"
+
+    expect(page).to have_content("Favorite Pet")
+    click_link 'Favorite Pet'
+
+    expect(current_path).to eq("/pets/#{@pet1.id}")
+    expect(page).to have_content("Pet has been added to your favorites list")
+  end
+
+  it 'has a favorites page' do
+    visit "/favorites"
+
+    expect(page).to have_content("Favorite Pets")
   end
 end

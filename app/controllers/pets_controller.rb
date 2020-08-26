@@ -47,4 +47,12 @@ class PetsController < ApplicationController
     Pet.destroy(params[:id])
     redirect_to '/pets'
   end
+
+  def add_favorite
+    @pet = Pet.find(params[:id])
+    @pet[:favorite] = true
+    @favorites = Pet.select(params[:favorite] == true)
+    flash[:notice] = "Pet has been added to your favorites list"
+  end
+
 end
