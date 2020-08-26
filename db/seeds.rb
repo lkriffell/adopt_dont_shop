@@ -11,7 +11,7 @@
                             state: "CO",
                             zip: "34213",
                             id: "1")
-@shelter1 = Shelter.create!(name: "Johnny Bob's 'Doption",
+@shelter2 = Shelter.create!(name: "Johnny Bob's 'Doption",
                             address: "1185",
                             city: "Denver",
                             state: "CO",
@@ -25,7 +25,7 @@
                     adoption_status: "Adoptable",
                     current_location: "Alfredo's Adoption",
                     shelter_id: "1")
-@pet1 = Pet.create!(name: "Elmer",
+@pet2 = Pet.create!(name: "Elmer",
                     approximate_age: "5",
                     sex: "male",
                     image: "elmer.jpg",
