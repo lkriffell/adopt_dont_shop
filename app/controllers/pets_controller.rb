@@ -76,4 +76,13 @@ class PetsController < ApplicationController
     redirect_to "/favorites"
   end
 
+  def remove_all_favorites
+    @favorites = Pet.favorited_pets
+    @favorites.each do |favorite|
+      favorite[:favorite] = false
+      favorite.save!
+    end
+    redirect_to "/favorites"
+  end
+
 end

@@ -88,8 +88,25 @@ RSpec.describe 'pet show' do
 
     click_link "Remove From Favorites"
     expect(page).to_not have_content("#{@pet1.approximate_age}")
-    # expect(page).to have_content("You have no favorited pets")
     expect(page).to_not have_link('Remove From Favorites')
+  end
+
+  it 'can let us know when we have no favorited pets' do
+    visit '/favorites'
+    expect(page).to have_content("You have no favorited pets")
+  end
+
+  it 'can removed all favorited pets' do
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+    visit "/pets/#{@pet2.id}"
+    click_link 'Favorite This Pet'
+    visit "/favorites"
+    click_link 'Remove All Pets From Favorites'
+    expect(page).to have_content("You have no favorited pets")
+    expect(page).to_not have_content("#{@pet1.approximate_age}")
+    expect(page).to_not have_content("#{@pet2.approximate_age}")
+
   end
 
 end
