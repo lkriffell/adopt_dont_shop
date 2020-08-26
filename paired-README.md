@@ -134,7 +134,7 @@ And I'm returned to the new form to create a new review
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 5, Edit a Shelter Review
 
@@ -153,7 +153,7 @@ And I can see my updated review
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 6, Edit a Shelter Review, cont.
 
@@ -164,7 +164,7 @@ And I'm returned to the edit form to edit that review
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 7, Delete a Shelter Review
 
@@ -180,7 +180,7 @@ And I should no longer see that shelter review
 Users will be able to favorite a pet and keep track of pet's they're interested in
 
 ```
-[ ] done
+[ X ] done
 
 User Story 8, Favorite Indicator
 
@@ -191,7 +191,7 @@ I can see this favorite indicator from any page in the application
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 9, Favorite Creation
 
@@ -206,7 +206,7 @@ The favorite indicator in the nav bar has incremented by one
 
 
 ```
-[ ] done
+[ X ] done
 
 User Story 10, Favorite Index Page
 
@@ -220,7 +220,7 @@ Each pet in my favorites shows the following information:
 ```
 
 ```
-[ ] done
+[ X ] done (already done)
 
 User Story 11, Favorite Indicator links to Index Page
 
@@ -230,7 +230,7 @@ I am taken to the favorites index page
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 12, Can't Favorite a Pet More Than Once
 
@@ -247,7 +247,7 @@ And I also see that my favorites indicator has decremented by 1
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 13, Remove a Favorite from Favorites Page
 

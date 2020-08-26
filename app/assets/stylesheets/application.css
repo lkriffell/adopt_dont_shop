@@ -46,7 +46,8 @@
  }
 
  img:hover {
-   background-color: pink;
+   /* background-color: pink; */
+   background: url(https://media3.giphy.com/media/f4Oy5PZNQz5q7dbAIp/200w.webp);
  }
 
  img{
@@ -62,6 +63,7 @@
    padding-bottom: 20px;
    padding-top: 20px;
    background-color: #e3ddb3;
+   text
    border: 50px;
    list-style-type: none;
  }

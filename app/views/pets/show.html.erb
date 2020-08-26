@@ -10,5 +10,11 @@
     <li>Adoption Status: <%= @pet.adoption_status %></li>
   </ul>
 </div>
+  <% if @pet.favorite == true %>
+    <%= link_to "Remove From Favorites", "/pets/#{@pet.id}/fav", method: :delete %><br>
+  <% else %>
+    <%= link_to "Favorite This Pet", "/pets/#{@pet.id}/fav" %><br>
+  <% end %>
   <h4><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h4>
+
   <%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %><br>
