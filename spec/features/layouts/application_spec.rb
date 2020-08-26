@@ -5,6 +5,6 @@ require 'rails_helper'
       visit '/shelters'
       click_link "Favorites"
 
-      expect(current_path).to eq('/pets/favorites')
+      expect(current_path).to eq('/favorites')
     end
   end
