@@ -35,4 +35,5 @@
 
 @review = @shelter1.reviews.create!(title: "Terrible Service",
                                   rating: 1,
-                                  content: "We did eight hours just to get my dog!! And when I got him he was covered in chocolate syrup :(")
+                                  content: "We did eight hours just to get my dog!! And when I got him he was covered in chocolate syrup :(",
+                                  image: "https://static1.squarespace.com/static/539c4601e4b0baefd4e19bea/5e7cc2fc2df85777bad3e6f0/59bc5a0ae9bfdf77f6f2abe9/1585240864313/?format=1500w")
