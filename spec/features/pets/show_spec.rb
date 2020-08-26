@@ -37,11 +37,22 @@ RSpec.describe 'pet show' do
 
     visit "/pets/#{@pet1.id}"
 
-    expect(page).to have_content("Favorite Pet")
-    click_link 'Favorite Pet'
+    expect(page).to have_content("Favorite This Pet")
+    click_link 'Favorite This Pet'
 
     expect(current_path).to eq("/pets/#{@pet1.id}")
-    expect(page).to have_content("Pet has been added to your favorites list")
+    expect(page).to have_content("#{@pet1.name} has been added to your favorites list")
+  end
+
+  it 'has a remove favorite button' do
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+
+    expect(page).to have_content("Remove From Favorites")
+    click_link 'Remove From Favorites'
+
+    expect(current_path).to eq("/pets/#{@pet1.id}")
+    expect(page).to have_content("#{@pet1.name} has been removed from your favorites list")
   end
 
   it 'has a favorites page' do
