@@ -57,7 +57,7 @@ class PetsController < ApplicationController
   end
 
   def show_favorite
-    @favorites = Pet.where(favorite: true)
+    @favorites = Pet.favorited_pets
   end
 
   def remove_favorite
