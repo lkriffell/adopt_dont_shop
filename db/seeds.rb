@@ -11,6 +11,13 @@
                             state: "CO",
                             zip: "34213",
                             id: "1")
+@shelter1 = Shelter.create!(name: "Johnny Bob's 'Doption",
+                            address: "1185",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80205",
+                            id: "2")
+
 @pet1 = Pet.create!(name: "Jimbo",
                     approximate_age: "1",
                     sex: "male",
@@ -18,6 +25,14 @@
                     adoption_status: "Adoptable",
                     current_location: "Alfredo's Adoption",
                     shelter_id: "1")
+@pet1 = Pet.create!(name: "Elmer",
+                    approximate_age: "5",
+                    sex: "male",
+                    image: "elmer.jpg",
+                    adoption_status: "In A Loving Home",
+                    current_location: "Alfredo's Adoption",
+                    shelter_id: "2")
+
 @review = @shelter1.reviews.create!(title: "Terrible Service",
                                   rating: 1,
                                   content: "We did eight hours just to get my dog!! And when I got him he was covered in chocolate syrup :(")
