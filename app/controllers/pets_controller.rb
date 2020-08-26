@@ -53,7 +53,7 @@ class PetsController < ApplicationController
     @pet[:favorite] = true
     flash[:notice] = "#{@pet.name} has been added to your favorites list"
     @pet.save!
-    render :show
+    redirect_to "/pets/#{@pet.id}"
   end
 
   def show_favorite
@@ -65,7 +65,7 @@ class PetsController < ApplicationController
     @pet[:favorite] = false
     @pet.save!
     flash[:notice] = "#{@pet.name} has been removed from your favorites list"
-    render :show
+    redirect_to "/pets/#{@pet.id}"
   end
 
 end

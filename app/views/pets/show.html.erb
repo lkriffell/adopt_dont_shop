@@ -2,7 +2,6 @@
 <% shelter = Shelter.find(@pet.shelter_id)%>
 
 <div id="showpet">
-  <%= flash[:notice] %><br><br>
   <%= image_tag @pet.image %>
   <ul>
     <li>Age: <%= @pet.approximate_age %></li>
