@@ -8,4 +8,12 @@ class Pet < ApplicationRecord
   # validates_presence_of :adoption_status
   # validates_presence_of :current_location
   # validates_presence_of :shelter_id
+
+  def self.favorited_pets
+    self.where(favorite: true)
+  end
+
+  def self.favorited_pets_count
+    self.where(favorite: true).count 
+  end
 end

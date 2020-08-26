@@ -1,13 +1,8 @@
 <h1>Favorite Pets</h1>
+
 <% @favorites.each do |favorite| %>
-<div id="showpet"> 
-<ul>
-  <li><%= favorite.name %></li>
-  <li><%= favorite.approximate_age %></li>
-  <li><%= favorite.sex %></li>
-  <li><%= favorite.current_location %></li>
-</ul>
-   <%= image_tag favorite.image %>
-   <% require "pry"; binding.pry %>
- </div>
+  <div id="showpet"> 
+     <h3><%= link_to "#{favorite.name}", "/pets/#{favorite.id}" %></h3><br>
+     <%= image_tag favorite.image %><br>
+  </div>
 <% end %>

@@ -51,8 +51,21 @@ class PetsController < ApplicationController
   def add_favorite
     @pet = Pet.find(params[:id])
     @pet[:favorite] = true
-    @favorites = Pet.select(params[:favorite] == true)
-    flash[:notice] = "Pet has been added to your favorites list"
+    flash[:notice] = "#{@pet.name} has been added to your favorites list"
+    @pet.save!
+    redirect_to "/pets/#{@pet.id}"
+  end
+
+  def show_favorite
+    @favorites = Pet.favorited_pets
+  end
+
+  def remove_favorite
+    @pet = Pet.find(params[:id])
+    @pet[:favorite] = false
+    @pet.save!
+    flash[:notice] = "#{@pet.name} has been removed from your favorites list"
+    redirect_to "/pets/#{@pet.id}"
   end
 
 end
