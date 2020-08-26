@@ -1,8 +1,8 @@
 <h2 id="petname"><%= @pet.name %></h2>
-<%= flash[:notice] %>
 <% shelter = Shelter.find(@pet.shelter_id)%>
 
 <div id="showpet">
+  <%= flash[:notice] %><br><br>
   <%= image_tag @pet.image %>
   <ul>
     <li>Age: <%= @pet.approximate_age %></li>
@@ -11,7 +11,11 @@
     <li>Adoption Status: <%= @pet.adoption_status %></li>
   </ul>
 </div>
-  <%= link_to "Favorite Pet", "/pets/#{@pet.id}" %><br>
+  <% if @pet.favorite == true %>
+    <%= link_to "Remove From Favorites", "/pets/#{@pet.id}/fav", method: :delete %><br>
+  <% else %>
+    <%= link_to "Favorite This Pet", "/pets/#{@pet.id}/fav" %><br>
+  <% end %>
   <h4><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h4>
 
   <%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %><br>
