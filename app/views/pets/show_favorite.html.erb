@@ -3,7 +3,7 @@
 <h3><%= "You have no favorited pets" %></h3>
 <% end %>
 <% @favorites.each do |favorite| %>
-  <div class=<%"showpet-#{favorite.id}"%>> 
+  <div class='showpet-<%=favorite.id%>'> 
     <div id="showpet">
      <h3><%= link_to "#{favorite.name}", "/pets/#{favorite.id}" %></h3><br>
      <%= image_tag favorite.image %><br>
@@ -14,4 +14,6 @@
 <br>
 <br>
 <br>
+<%= link_to "Apply to Adopt", "/favorites/apply" %><br>
+
 <%= link_to "Remove All Pets From Favorites", "/remove_favorites", method: :delete %><br>

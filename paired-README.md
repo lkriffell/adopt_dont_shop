@@ -292,7 +292,7 @@ And the favorites indicator returns to 0
 Users will be able to submit an application for one ore more pets they they've favorited.
 
 ```
-[ ] done
+[ X ] done
 
 User Story 16, Applying for a Pet
 
