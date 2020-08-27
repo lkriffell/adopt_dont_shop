@@ -22,16 +22,6 @@ ActiveRecord::Schema.define(version: 2020_08_27_211556) do
     t.index ["pets_id"], name: "index_application_pets_on_pets_id"
   end
 
-  create_table "application_tables", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.integer "zip"
-    t.string "phone_number"
-    t.string "description"
-  end
-
   create_table "applications", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -47,13 +37,6 @@ ActiveRecord::Schema.define(version: 2020_08_27_211556) do
     t.bigint "pets_id"
     t.index ["applications_id"], name: "index_applications_pets_on_applications_id"
     t.index ["pets_id"], name: "index_applications_pets_on_pets_id"
-  end
-
-  create_table "joins_table_application_pets", force: :cascade do |t|
-    t.bigint "application_tables_id"
-    t.bigint "pets_id"
-    t.index ["application_tables_id"], name: "index_joins_table_application_pets_on_application_tables_id"
-    t.index ["pets_id"], name: "index_joins_table_application_pets_on_pets_id"
   end
 
   create_table "pets", force: :cascade do |t|

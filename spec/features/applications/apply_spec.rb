@@ -64,4 +64,51 @@ RSpec.describe 'pet application' do
     expect(current_path).to eq('/favorites')
     expect(page).to have_content("Your application for #{@pet1.name} and #{@pet2.name} has been submitted!")
   end
+
+  it 'displays flash message when user has not filled out all application fields' do
+
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+
+    visit "/favorites"
+
+    click_link "Apply to Adopt"
+
+    page.check "#{@pet1.id}"
+    fill_in :name, with: "John"
+    fill_in :address, with: 21345
+    fill_in :city, with: "Denver"
+    fill_in :state, with: "CO"
+    fill_in :zip, with: 80025
+    fill_in :phone_number, with: "234-735-4743"
+    fill_in :description, with: ""
+
+    click_on 'Submit Application'
+
+    expect(current_path).to eq("/favorites/apply")
+    expect(page).to have_content("You must complete the form in order to submit the application")
+  end
+  it 'displays flash message when no pet is checked' do
+
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+
+    visit "/favorites"
+
+    click_link "Apply to Adopt"
+
+    fill_in :name, with: "John"
+    fill_in :address, with: 21345
+    fill_in :city, with: "Denver"
+    fill_in :state, with: "CO"
+    fill_in :zip, with: 80025
+    fill_in :phone_number, with: "234-735-4743"
+    fill_in :description, with: "I'm the best."
+
+    click_on 'Submit Application'
+
+    expect(current_path).to eq("/favorites/apply")
+    expect(page).to have_content("You must select a pet to apply for.")
+  end
+
 end
