@@ -70,15 +70,18 @@ RSpec.describe 'pet show' do
   it 'has a favorite link next to each pet on favorites page' do
     visit "/pets/#{@pet1.id}"
     click_link 'Favorite This Pet'
+
     visit "/pets/#{@pet2.id}"
     click_link 'Favorite This Pet'
+    
     visit "/favorites"
-      within(".showpet-#{@pet1.id}") do
-        expect(page).to have_link('Remove From Favorites')
-      end
-      within(".showpet-#{@pet2.id}") do
-        expect(page).to have_link('Remove From Favorites')
-      end
+
+    within(".showpet-#{@pet1.id}") do
+      expect(page).to have_link('Remove From Favorites')
+    end
+    within(".showpet-#{@pet2.id}") do
+      expect(page).to have_link('Remove From Favorites')
+    end
   end
 
   it 'can remove favorite pet from favorites page' do
