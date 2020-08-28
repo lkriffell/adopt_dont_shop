@@ -6,15 +6,21 @@ class ApplicationsController < ApplicationController
 
   def submit
     @favorites = Pet.favorited_pets
-    names = @favorites.select(:name)
+    ids = @favorites.select(:id)
     @pets_applied_for = ""
+    pet_checked = false
+    ids.each do |id|
+      if params.include?(id.id.to_s)
+        pet_checked = true
+      end
+    end
     if @favorites == []
       flash[:alert] = "You have no current favorites to apply for!"
       redirect_to '/favorites'
     elsif params.value?("")
       flash[:alert] = "You must complete the form in order to submit the application"
       redirect_to '/favorites/apply'
-    elsif names.each { |name| params.include?(name) }
+    elsif pet_checked
       @favorites.each do |favorite|
         if params.include?(favorite.id.to_s)
           favorite[:favorite] = false
