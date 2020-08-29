@@ -18,7 +18,7 @@
       <% if pet.adoption_status == "Adoptable" %>
         <li><%= link_to "Approve Application", "/pets/#{pet.id}/approve" %></li>
       <% else %>
-        <li>This pet is pending adoption by another user.</li>
+        <li>This pet is pending adoption.</li>
       <% end %>
     </ul>
   <% end %>

@@ -1,8 +1,0 @@
-<h1>Applications for <%= @pet.name %></h1>
-
-<% @app_pets.each do |app_pet| %>
-  <% app = Application.get_app_by_id(app_pet.applications_id) %>
-  <ul>
-    <li><%= link_to "#{app.name}", "/applications/#{app.id}" %></li>
-  </ul>
-<% end %>

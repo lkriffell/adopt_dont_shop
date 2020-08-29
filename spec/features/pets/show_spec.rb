@@ -150,17 +150,7 @@ RSpec.describe 'pet show' do
 
   it 'shows link to all applications for the pet' do
     visit "/pets/#{@pet1.id}"
-    expect(page).to have_link("View #{@pet1.name}'s Applications")
-
-    click_on "View #{@pet1.name}'s Applications"
-
-    expect(current_path).to eq("/pets/#{@pet1.id}/applications")
-    expect(page).to have_link(@app1.name)
-
-    click_on "#{@app1.name}"
-    expect(current_path).to eq("/applications/#{@app1.id}")
-
-
+    expect(page).to have_content("Applications for Jimbo")
   end
 
 end

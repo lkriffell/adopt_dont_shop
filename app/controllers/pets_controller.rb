@@ -5,6 +5,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @shelter = Shelter.find(@pet.shelter_id)
     @apps_pets = ApplicationsPets.where(pets_id: params[:id])
     if @apps_pets != []
       @app = Application.get_app_by_id(@apps_pets.first.applications_id)
@@ -88,14 +89,6 @@ class PetsController < ApplicationController
       favorite.save!
     end
     redirect_to "/favorites"
-  end
-
-  def show_apps
-    @pet = Pet.find(params[:id])
-    @app_pets = ApplicationsPets.where(pets_id: params[:id].to_i)
-    if @app_pets == []
-      flash.now[:alert] = "There are no current applications for this pet"
-    end
   end
 
   def approve
