@@ -15,11 +15,14 @@ ActiveRecord::Schema.define(version: 2020_08_27_211556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "application_pets", force: :cascade do |t|
-    t.bigint "application_tables_id"
-    t.bigint "pets_id"
-    t.index ["application_tables_id"], name: "index_application_pets_on_application_tables_id"
-    t.index ["pets_id"], name: "index_application_pets_on_pets_id"
+  create_table "application_tables", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
+    t.string "phone_number"
+    t.string "description"
   end
 
   create_table "applications", force: :cascade do |t|

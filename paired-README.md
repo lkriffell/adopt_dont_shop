@@ -316,7 +316,7 @@ And I'm taken back to my favorites page where I no longer see the pets for which
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 17, Incomplete application for a Pet
 
@@ -335,7 +335,7 @@ And I see a flash message indicating that I must complete the form in order to s
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 18, List of Pets that have applications on them
 
