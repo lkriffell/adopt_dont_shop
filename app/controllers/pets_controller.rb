@@ -58,6 +58,8 @@ class PetsController < ApplicationController
 
   def show_favorite
     @favorites = Pet.favorited_pets
+    @ap_pet = ApplicationPet.all
+    require "pry"; binding.pry
   end
 
   def remove_favorite_from_pets_show

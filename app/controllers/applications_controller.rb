@@ -6,6 +6,7 @@ class ApplicationsController < ApplicationController
 
   def submit
     @favorites = Pet.favorited_pets
+    require "pry"; binding.pry
     ids = @favorites.select(:id)
     @pets_applied_for = ""
     pet_checked = false

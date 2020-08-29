@@ -73,7 +73,7 @@ RSpec.describe 'pet show' do
 
     visit "/pets/#{@pet2.id}"
     click_link 'Favorite This Pet'
-    
+
     visit "/favorites"
 
     within(".showpet-#{@pet1.id}") do
@@ -110,6 +110,34 @@ RSpec.describe 'pet show' do
     expect(page).to_not have_content("#{@pet1.approximate_age}")
     expect(page).to_not have_content("#{@pet2.approximate_age}")
 
+  end
+
+  it 'can list pets who have been applied for' do
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+    visit "/pets/#{@pet2.id}"
+    click_link 'Favorite This Pet'
+
+    visit "/favorites"
+
+    click_link "Apply to Adopt"
+    expect(current_path).to eq("/favorites/apply")
+
+    page.check "#{@pet1.id}"
+    fill_in :name, with: "John"
+    fill_in :address, with: 21345
+    fill_in :city, with: "Denver"
+    fill_in :state, with: "CO"
+    fill_in :zip, with: 80025
+    fill_in :phone_number, with: "234-735-4743"
+    fill_in :description, with: "I'm the best."
+
+    click_on 'Submit Application'
+
+    visit '/favorites'
+
+    expect(page).to have_content("Pets with applications")
+    expect(page).to have_content("#{@pet1.name}")
   end
 
 end
