@@ -86,4 +86,8 @@ class PetsController < ApplicationController
     redirect_to "/favorites"
   end
 
+  def show_apps
+    @pet = Pet.find(params[:id])
+    @app_pets = ApplicationsPets.where(pets_id: params[:id].to_i)
+  end
 end

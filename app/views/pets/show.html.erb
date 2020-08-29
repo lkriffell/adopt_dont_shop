@@ -14,7 +14,9 @@
     <%= link_to "Remove From Favorites", "/pets/#{@pet.id}/fav", method: :delete %><br>
   <% else %>
     <%= link_to "Favorite This Pet", "/pets/#{@pet.id}/fav" %><br>
-  <% end %>
+  <% end %><br>
+  <%= link_to "View #{@pet.name}'s Applications", "/pets/#{@pet.id}/applications" %>
+
   <h4><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h4>
 
   <%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %><br>

@@ -13,15 +13,15 @@
 <% end %>
 <br>
 <br>
+<% if @app_pets != [] %>
 <h3>Pets with applications pending</h3>
-  <% if @app_pets != [] %>
     <% @app_pets.each do |application| %>
       <% pet = Pet.get_pet_by_id(application.pets_id) %>
       <ul>
         <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></li>
       </ul>
     <% end %>
-  <% end %>
+<% end %>
 <br>
 <%= link_to "Apply to Adopt", "/favorites/apply" %><br>
 <br>

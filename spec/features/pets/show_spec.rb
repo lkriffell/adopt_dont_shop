@@ -23,6 +23,14 @@ RSpec.describe 'pet show' do
                         adoption_status: "In A Loving Home",
                         current_location: "Alfredo's Adoption",
                         shelter_id: "1")
+    @app1 = Application.create!(name: "John",
+                                address: 21345,
+                                city:"Denver",
+                                zip: 80025,
+                                state: "CO",
+                                phone_number: "234-735-4743",
+                                description: "I'm the best.")
+    @app_pets = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet1.id)
   end
 
   it 'displays pet attributes' do
@@ -138,6 +146,21 @@ RSpec.describe 'pet show' do
 
     expect(page).to have_content("Pets with applications")
     expect(page).to have_content("#{@pet1.name}")
+  end
+
+  it 'shows link to all applications for the pet' do
+    visit "/pets/#{@pet1.id}"
+    expect(page).to have_link("View #{@pet1.name}'s Applications")
+
+    click_on "View #{@pet1.name}'s Applications"
+
+    expect(current_path).to eq("/pets/#{@pet1.id}/applications")
+    expect(page).to have_link(@app1.name)
+
+    click_on "#{@app1.name}"
+    expect(current_path).to eq("/applications/#{@app1.id}")
+
+
   end
 
 end

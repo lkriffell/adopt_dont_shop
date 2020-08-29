@@ -1,0 +1,19 @@
+<h1><%= @app.name%>'s Application </h1>
+
+<ul>
+  <li>Name: <%= @app.name %></li>
+  <li>Address: <%= @app.address %></li>
+  <li>City: <%= @app.city %></li>
+  <li>State: <%= @app.state %></li>
+  <li>Zip: <%= @app.zip %></li>
+  <li>Phone Number: <%= @app.phone_number %></li>
+  <p>Description: <%= @app.description %></p>
+</ul>
+
+  <h3>Pets Applied For:</h3>
+  <% @apps_pets.each do |app_pet| %>
+  <% pet = Pet.get_pet_by_id(app_pet.pets_id) %>
+    <ul>
+      <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></li>
+    </ul>
+  <% end %>

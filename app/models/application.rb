@@ -10,4 +10,7 @@ class Application < ApplicationRecord
   validates_presence_of :phone_number
   validates_presence_of :description
 
+  def self.get_app_by_id(id)
+    find(id)
+  end
 end

@@ -4,6 +4,11 @@ class ApplicationsController < ApplicationController
     @favorites = Pet.favorited_pets
   end
 
+  def show
+    @app = Application.find(params[:id])
+    @apps_pets = ApplicationsPets.where(applications_id: params[:id])
+  end
+
   def submit
     @favorites = Pet.favorited_pets
     ids = @favorites.select(:id)
