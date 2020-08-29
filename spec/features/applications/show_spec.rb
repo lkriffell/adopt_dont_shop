@@ -61,4 +61,15 @@ RSpec.describe 'pet applications show page' do
     expect(current_path).to eq("/pets/#{@pet2.id}/applications")
     expect(page).to have_content("There are no current applications for this pet")
   end
+
+  it 'has link to approve app' do
+    visit "/applications/#{@app1.id}"
+    expect(page).to have_link("Approve Application")
+
+    click_on "Approve Application"
+
+    expect(current_path).to eq("/pets/#{@pet1.id}")
+    expect(page).to have_content("Adoption Status: Pending")
+    expect(page).to have_content("On hold for #{@app1.name}")
+  end
 end

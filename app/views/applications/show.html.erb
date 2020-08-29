@@ -15,5 +15,10 @@
   <% pet = Pet.get_pet_by_id(app_pet.pets_id) %>
     <ul>
       <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></li>
+      <% if pet.adoption_status == "Adoptable" %>
+        <li><%= link_to "Approve Application", "/pets/#{pet.id}/approve" %></li>
+      <% else %>
+        <li>This pet is pending adoption by another user.</li>
+      <% end %>
     </ul>
   <% end %>

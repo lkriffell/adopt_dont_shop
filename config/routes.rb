@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   post '/favorites/apply', to: 'applications#submit'
   get '/applications/:id', to: 'applications#show'
   get '/pets/:id/applications', to: 'pets#show_apps'
+  get '/pets/:id/approve', to: 'pets#approve'
 end

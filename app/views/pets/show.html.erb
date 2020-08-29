@@ -1,6 +1,10 @@
 <h2 id="petname"><%= @pet.name %></h2>
 <% shelter = Shelter.find(@pet.shelter_id)%>
 
+<% if @pet.adoption_status == "Pending" %>
+  <h3>On hold for <%= @app.name %></h3>
+<% end %>
+
 <div id="showpet">
   <%= image_tag @pet.image %>
   <ul>

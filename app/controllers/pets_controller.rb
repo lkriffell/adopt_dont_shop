@@ -5,6 +5,10 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @apps_pets = ApplicationsPets.where(pets_id: params[:id])
+    if @apps_pets != []
+      @app = Application.get_app_by_id(@apps_pets.first.applications_id)
+    end
   end
 
   def new
@@ -92,5 +96,14 @@ class PetsController < ApplicationController
     if @app_pets == []
       flash.now[:alert] = "There are no current applications for this pet"
     end
+  end
+
+  def approve
+    @pet = Pet.find(params[:id])
+
+    @pet.adoption_status = "Pending"
+    @pet.save!
+
+    redirect_to "/pets/#{@pet.id}"
   end
 end
