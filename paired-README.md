@@ -379,7 +379,7 @@ Each applicant's name is a link to their application show page
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 21, Pet Applications Index Page When No Applications
 

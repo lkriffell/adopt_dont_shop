@@ -89,5 +89,8 @@ class PetsController < ApplicationController
   def show_apps
     @pet = Pet.find(params[:id])
     @app_pets = ApplicationsPets.where(pets_id: params[:id].to_i)
+    if @app_pets == []
+      flash.now[:alert] = "There are no current applications for this pet"
+    end
   end
 end
