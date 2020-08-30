@@ -49,6 +49,30 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def collect_checked_pets
+    @favorites = Pet.favorited_pets
+    ids = @favorites.select(:id)
+    checked_pets = []
+    ids.each do |id|
+      if params.include?(id.id.to_s)
+        checked_pets << id
+      end
+    end
+    checked_pets
+  end
+
+  def approve
+    @app = Application.find(params[:id])
+    checked_pets = collect_checked_pets
+    checked_pets.each do |checked_pet|
+      pet = Pet.find(checked_pet.id)
+      pet.adoption_status = "Pending"
+      pet.save!
+    end
+    flash[:notice] = "Thank You. Your application is pending."
+    redirect_to "/applications/#{@app.id}"
+  end
+
   private
   def application_params
     params.permit(:name, :address, :city, :state, :zip, :phone_number, :description)

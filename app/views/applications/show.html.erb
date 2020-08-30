@@ -11,14 +11,17 @@
 </ul>
 
   <h3>Pets Applied For:</h3>
-  <% @apps_pets.each do |app_pet| %>
-  <% pet = Pet.get_pet_by_id(app_pet.pets_id) %>
-    <ul>
-      <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></li>
-      <% if pet.adoption_status == "Adoptable" %>
-        <li><%= link_to "Approve Application", "/pets/#{pet.id}/approve" %></li>
-      <% else %>
-        <li>This pet is pending adoption.</li>
-      <% end %>
-    </ul>
+  <p>Check each pet you'd like to approve. Pending pets cannot approved.</p>
+  <%= form_tag ("/applications/#{@app.id}/approve") do %>
+    <% @apps_pets.each do |app_pet| %>
+    <% pet = Pet.get_pet_by_id(app_pet.pets_id) %>
+      <ul>
+        <% if pet.adoption_status == "Adoptable" %>
+        <li id=<%="checked_field-#{pet.id}"%>><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> - <%= check_box_tag "#{pet.id}", "#{pet.name}"%></li>
+        <% else %>
+          <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> - This pet is pending adoption.</li>
+        <% end %>
+      </ul>
+    <% end %>
+    <li><%= submit_tag "Approve Application" %></li>
   <% end %>

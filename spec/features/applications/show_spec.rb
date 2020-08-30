@@ -19,7 +19,7 @@ RSpec.describe 'pet applications show page' do
                         approximate_age: "5",
                         sex: "male",
                         image: "elmer.jpg",
-                        adoption_status: "In A Loving Home",
+                        adoption_status: "Adoptable",
                         current_location: "Alfredo's Adoption",
                         shelter_id: "1")
 
@@ -30,7 +30,8 @@ RSpec.describe 'pet applications show page' do
                                 state: "CO",
                                 phone_number: "234-735-4743",
                                 description: "I'm the best.")
-    @app_pets = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet1.id)
+    @app_pets_1 = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet1.id)
+    @app_pets_2 = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet2.id)
   end
 
   it 'displays all application attributes' do
@@ -62,7 +63,7 @@ RSpec.describe 'pet applications show page' do
 
   it 'has link to approve app' do
     visit "/applications/#{@app1.id}"
-    expect(page).to have_link("Approve Application")
+    expect(page).to have_button("Approve Application")
 
     click_on "Approve Application"
 
@@ -70,4 +71,26 @@ RSpec.describe 'pet applications show page' do
     expect(page).to have_content("Adoption Status: Pending")
     expect(page).to have_content("On hold for #{@app1.name}")
   end
+
+  it 'can approve application for more than one pet' do
+
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+    visit "/pets/#{@pet2.id}"
+    click_link 'Favorite This Pet'
+    visit "/applications/#{@app1.id}"
+    expect(page).to have_link(@pet1.name)
+    expect(page).to have_link(@pet2.name)
+
+    page.check "#{@pet1.id}"
+    page.check "#{@pet2.id}"
+
+    click_on "Approve Application"
+
+    expect(current_path).to eq("/applications/#{@app1.id}")
+    expect(page).to have_content("Thank You. Your application is pending")
+    expect(page).to have_content("This pet is pending adoption.")
+
+  end
+
 end

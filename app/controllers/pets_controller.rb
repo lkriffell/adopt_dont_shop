@@ -90,13 +90,4 @@ class PetsController < ApplicationController
     end
     redirect_to "/favorites"
   end
-
-  def approve
-    @pet = Pet.find(params[:id])
-
-    @pet.adoption_status = "Pending"
-    @pet.save!
-
-    redirect_to "/pets/#{@pet.id}"
-  end
 end
