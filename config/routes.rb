@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   get '/favorites/apply', to: 'applications#apply'
   post '/favorites/apply', to: 'applications#submit'
   get '/applications/:id', to: 'applications#show'
-  post '/applications/:id/approve', to: 'applications#approve'
+  post '/applications/:id', to: 'applications#approve'
+  patch '/applications/:id/:pet_id', to: 'applications#revoke'
 end

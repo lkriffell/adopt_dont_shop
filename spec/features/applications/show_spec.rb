@@ -61,17 +61,6 @@ RSpec.describe 'pet applications show page' do
     # expect(page).to have_content("There are no current applications for this pet.")
   end
 
-  it 'has link to approve app' do
-    visit "/applications/#{@app1.id}"
-    expect(page).to have_button("Approve Application")
-
-    click_on "Approve Application"
-
-    expect(current_path).to eq("/pets/#{@pet1.id}")
-    expect(page).to have_content("Adoption Status: Pending")
-    expect(page).to have_content("On hold for #{@app1.name}")
-  end
-
   it 'can approve application for more than one pet' do
 
     visit "/pets/#{@pet1.id}"
@@ -90,7 +79,30 @@ RSpec.describe 'pet applications show page' do
     expect(current_path).to eq("/applications/#{@app1.id}")
     expect(page).to have_content("Thank You. Your application is pending")
     expect(page).to have_content("This pet is pending adoption.")
-
   end
+
+  it 'can revoke an application' do
+
+    visit "/pets/#{@pet1.id}"
+    click_link 'Favorite This Pet'
+    visit "/applications/#{@app1.id}"
+    expect(page).to have_link(@pet1.name)
+
+    page.check "#{@pet1.id}"
+
+    click_on "Approve Application"
+
+    expect(current_path).to eq("/applications/#{@app1.id}")
+    expect(page).to have_link("Revoke Application")
+
+    click_link "Revoke Application"
+
+    expect(current_path).to eq("/applications/#{@app1.id}")
+    expect(page).to have_content("#{@pet1.name} has been revoked from your application.")
+    expect(page).to_not have_link("Revoke Application")
+    expect(@pet1.adoption_status).to eq("Adoptable")
+  end
+
+
 
 end

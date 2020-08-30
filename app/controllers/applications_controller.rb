@@ -50,8 +50,7 @@ class ApplicationsController < ApplicationController
   end
 
   def collect_checked_pets
-    @favorites = Pet.favorited_pets
-    ids = @favorites.select(:id)
+    ids = Pet.all.select(:id)
     checked_pets = []
     ids.each do |id|
       if params.include?(id.id.to_s)
@@ -62,15 +61,24 @@ class ApplicationsController < ApplicationController
   end
 
   def approve
-    @app = Application.find(params[:id])
+    app = Application.find(params[:id])
     checked_pets = collect_checked_pets
     checked_pets.each do |checked_pet|
       pet = Pet.find(checked_pet.id)
-      pet.adoption_status = "Pending"
+      pet.update!(adoption_status: "Pending")
       pet.save!
+      #require "pry"; binding.pry
     end
     flash[:notice] = "Thank You. Your application is pending."
-    redirect_to "/applications/#{@app.id}"
+    redirect_to "/applications/#{app.id}"
+  end
+
+  def revoke
+    pet = Pet.get_pet_by_id(params[:pet_id])
+    pet.update!(adoption_status: "Adoptable")
+    pet.save!
+    flash[:notice] = "#{pet.name} has been revoked from your application."
+    redirect_to "/applications/#{params[:id]}"
   end
 
   private

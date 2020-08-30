@@ -64,6 +64,11 @@ class PetsController < ApplicationController
   def show_favorite
     @favorites = Pet.favorited_pets
     @app_pets = ApplicationsPets.all
+    a = []
+    @app_pets.each do |pet|
+      a << pet.pets_id
+    end
+    @ids = a.uniq
   end
 
   def remove_favorite_from_pets_show
