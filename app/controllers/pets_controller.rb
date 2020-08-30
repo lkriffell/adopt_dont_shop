@@ -5,6 +5,11 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @shelter = Shelter.find(@pet.shelter_id)
+    @apps_pets = ApplicationsPets.where(pets_id: params[:id])
+    if @apps_pets != []
+      @app = Application.get_app_by_id(@apps_pets.first.applications_id)
+    end
   end
 
   def new
@@ -58,6 +63,12 @@ class PetsController < ApplicationController
 
   def show_favorite
     @favorites = Pet.favorited_pets
+    @app_pets = ApplicationsPets.all
+    a = []
+    @app_pets.each do |pet|
+      a << pet.pets_id
+    end
+    @ids = a.uniq
   end
 
   def remove_favorite_from_pets_show
@@ -84,5 +95,4 @@ class PetsController < ApplicationController
     end
     redirect_to "/favorites"
   end
-
 end

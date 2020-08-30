@@ -292,7 +292,7 @@ And the favorites indicator returns to 0
 Users will be able to submit an application for one ore more pets they they've favorited.
 
 ```
-[ ] done
+[ X ] done
 
 User Story 16, Applying for a Pet
 
@@ -316,7 +316,7 @@ And I'm taken back to my favorites page where I no longer see the pets for which
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 17, Incomplete application for a Pet
 
@@ -335,7 +335,7 @@ And I see a flash message indicating that I must complete the form in order to s
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 18, List of Pets that have applications on them
 
@@ -347,7 +347,7 @@ Each pet's name is a link to their show page
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 19, Application Show Page
 
@@ -366,7 +366,7 @@ I can see the following:
 
 
 ```
-[ ] done
+[ X ] done
 
 User Story 20, Pet Applications Index Page
 
@@ -379,7 +379,7 @@ Each applicant's name is a link to their application show page
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 21, Pet Applications Index Page When No Applications
 
@@ -389,7 +389,7 @@ I see a message saying that there are no applications for this pet yet
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 22, Approving an Application
 

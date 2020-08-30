@@ -3,7 +3,7 @@
 <h3><%= "You have no favorited pets" %></h3>
 <% end %>
 <% @favorites.each do |favorite| %>
-  <div class=<%"showpet-#{favorite.id}"%>> 
+  <div class='showpet-<%=favorite.id%>'> 
     <div id="showpet">
      <h3><%= link_to "#{favorite.name}", "/pets/#{favorite.id}" %></h3><br>
      <%= image_tag favorite.image %><br>
@@ -13,5 +13,16 @@
 <% end %>
 <br>
 <br>
+<% if @ids != [] %>
+<h3>Pets with applications pending</h3>
+    <% @ids.each do |id| %>
+      <% pet = Pet.get_pet_by_id(id) %>
+      <ul>
+        <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></li>
+      </ul>
+    <% end %>
+<% end %>
+<br>
+<%= link_to "Apply to Adopt", "/favorites/apply" %><br>
 <br>
 <%= link_to "Remove All Pets From Favorites", "/remove_favorites", method: :delete %><br>

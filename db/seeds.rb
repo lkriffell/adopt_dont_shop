@@ -29,7 +29,7 @@
                     approximate_age: "5",
                     sex: "male",
                     image: "elmer.jpg",
-                    adoption_status: "In A Loving Home",
+                    adoption_status: "Adoptable",
                     current_location: "Alfredo's Adoption",
                     shelter_id: "2")
 
