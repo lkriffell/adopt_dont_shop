@@ -6,7 +6,7 @@
   <%= form_tag ('/favorites/apply') do %>
 
     <% @favorites.each do |favorite| %>
-    <h3 id=<%="checked_field-#{favorite.id}"%>><%= check_box_tag "#{favorite.id}", "#{favorite.name}"%> <%= favorite.name %></h3>
+    <h3 id=<%="checked_field-#{favorite.id}"%>><%= check_box_tag "checked_pets[]", favorite.id%> <%= favorite.name %></h3>
     <% end %>
 
     <label>Name:</label><br>

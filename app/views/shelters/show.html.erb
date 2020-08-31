@@ -9,9 +9,15 @@
     <h3>City: <%= @shelter.city %></h3>
     <h3>State: <%= @shelter.state%></h3>
     <h3>Zip: <%= @shelter.zip %></h3>
+    <h3>Pets at Location: <%= @shelter.pet_count %></h3>
+    <h3>Average Rating: <%= @shelter.average_review(@shelter.id) %></h3>
+    <h3>Number of Application: <%= @shelter.num_applications(@shelter.id) %></h3>
+
 
     <h4><a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a></h4>
-    <h4><%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", :method => :delete %></h4>
+    <% if @shelter.pets_pending == [] %>
+      <h4><%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", :method => :delete %></h4>
+    <% end %>
   </div>
 
   <h1>Shelter Reviews</h1>

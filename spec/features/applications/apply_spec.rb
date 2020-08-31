@@ -41,9 +41,14 @@ RSpec.describe 'pet application' do
     expect(page).to have_content(@pet1.name)
     expect(page).to have_content(@pet2.name)
 
-    page.check "#{@pet1.id}"
-    page.check "#{@pet2.id}"
-    expect(page).to have_checked_field("#{@pet1.id}")
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
+    within("#checked_field-#{@pet2.id}") do
+      page.check "checked_pets[]"
+      expect(page).to have_checked_field("checked_pets[]")
+    end
 
     expect(page).to have_content("Name:")
     expect(page).to have_content("Address:")
@@ -74,7 +79,10 @@ RSpec.describe 'pet application' do
 
     click_link "Apply to Adopt"
 
-    page.check "#{@pet1.id}"
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
     fill_in :name, with: "John"
     fill_in :address, with: 21345
     fill_in :city, with: "Denver"
@@ -134,7 +142,10 @@ RSpec.describe 'pet application' do
     click_link "Apply to Adopt"
     expect(current_path).to eq("/favorites/apply")
 
-    page.check "#{@pet1.id}"
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
     fill_in :name, with: "John"
     fill_in :address, with: 21345
     fill_in :city, with: "Denver"
@@ -160,8 +171,13 @@ RSpec.describe 'pet application' do
     click_link "Apply to Adopt"
     expect(current_path).to eq("/favorites/apply")
 
-    page.check "#{@pet1.id}"
-    page.check "#{@pet2.id}"
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
+    within("#checked_field-#{@pet2.id}") do
+      page.check "checked_pets[]"
+    end
     fill_in :name, with: "John"
     fill_in :address, with: 21345
     fill_in :city, with: "Denver"

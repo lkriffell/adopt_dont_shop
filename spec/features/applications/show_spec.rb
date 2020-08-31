@@ -2,6 +2,9 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'pet applications show page' do
   before :each do
+    ApplicationsPets.delete_all
+    Pet.delete_all
+    Shelter.delete_all
     @shelter1 = Shelter.create!(name: "Alfredo's Adoption",
                                 address: "55555",
                                 city: "Denver",
@@ -36,7 +39,7 @@ RSpec.describe 'pet applications show page' do
 
   it 'displays all application attributes' do
 
-    visit "/applications/#{Application.all.first.id}"
+    visit "/applications/#{@app1.id}"
 
     expect(page).to have_content(@app1.name)
     expect(page).to have_content(@app1.address)
@@ -46,9 +49,8 @@ RSpec.describe 'pet applications show page' do
     expect(page).to have_content(@app1.phone_number)
     expect(page).to have_content(@app1.description)
 
-    expect(page).to have_content(@pet1.name)
-
     expect(page).to have_link(@pet1.name)
+
     click_on "#{@pet1.name}"
     expect(current_path).to eq("/pets/#{@pet1.id}")
   end
@@ -71,8 +73,13 @@ RSpec.describe 'pet applications show page' do
     expect(page).to have_link(@pet1.name)
     expect(page).to have_link(@pet2.name)
 
-    page.check "#{@pet1.id}"
-    page.check "#{@pet2.id}"
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
+    within("#checked_field-#{@pet2.id}") do
+      page.check "checked_pets[]"
+    end
 
     click_on "Approve Application"
 
@@ -88,7 +95,10 @@ RSpec.describe 'pet applications show page' do
     visit "/applications/#{@app1.id}"
     expect(page).to have_link(@pet1.name)
 
-    page.check "#{@pet1.id}"
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
 
     click_on "Approve Application"
 

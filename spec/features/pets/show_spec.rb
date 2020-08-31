@@ -131,7 +131,10 @@ RSpec.describe 'pet show' do
     click_link "Apply to Adopt"
     expect(current_path).to eq("/favorites/apply")
 
-    page.check "#{@pet1.id}"
+    within("#checked_field-#{@pet1.id}") do
+      page.check "checked_pets[]"
+    end
+
     fill_in :name, with: "John"
     fill_in :address, with: 21345
     fill_in :city, with: "Denver"

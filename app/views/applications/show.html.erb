@@ -17,7 +17,7 @@
     <% pet = Pet.get_pet_by_id(app_pet.pets_id) %>
       <ul>
         <% if pet.adoption_status == "Adoptable" %>
-        <li id=<%="checked_field-#{pet.id}"%>><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> - <%= check_box_tag "#{pet.id}", "#{pet.name}"%></li>
+        <li id=<%="checked_field-#{pet.id}"%>><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> - <%= check_box_tag "checked_pets[]", pet.id%></li>
         <% else %>
           <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> - This pet is pending adoption. - <%= link_to "Revoke Application", "/applications/#{@app.id}/#{pet.id}", method: :patch %></li>
         <% end %>

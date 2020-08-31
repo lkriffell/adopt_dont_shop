@@ -403,7 +403,7 @@ And I see text on the page that says who this pet is on hold for (Ex: "On hold f
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 23, Users can get approved to adopt more than one pet
 
@@ -416,7 +416,7 @@ I'm able to approve the application for any number of pets
 ```
 User Story 24, Pets can only have one approved application on them at any time
 
-[ ] done
+[ X ] done
 
 As a visitor
 When a pet has more than one application made for them
@@ -428,7 +428,7 @@ I can not approve any other applications for that pet but all other applications
 ```
 User Story 25, Approved Applications can be revoked
 
-[ ] done
+[ X ] done
 
 As a visitor
 After an application has been approved for a pet
@@ -450,7 +450,7 @@ Visitors will have additional constraints when manipulating shelter data in the 
 
 
 ```
-[ ] done
+[ X ] done
 
 User Story 26, Shelters with Pets that have pending status cannot be Deleted
 
@@ -463,7 +463,7 @@ Either:
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 27, Shelters can be Deleted as long as all pets do not have approved applications on them
 
@@ -475,7 +475,7 @@ Then all of their pets are deleted as well
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 28, Deleting Shelters Deletes its Reviews
 
@@ -485,7 +485,7 @@ All reviews associated with that shelter are also deleted
 ```
 
 ```
-[ ] done
+[ X ] done
 
 User Story 29, Flash Messages for Shelter Create and Update
 

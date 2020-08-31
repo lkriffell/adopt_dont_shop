@@ -3,6 +3,8 @@ require 'rails_helper'
 # Before each for setup
 RSpec.describe 'shelters new page' do
   before :each do
+    ApplicationsPets.delete_all
+    Pet.delete_all
     Shelter.delete_all
   end
 
@@ -26,7 +28,6 @@ RSpec.describe 'shelters new page' do
 
     new_shelter = Shelter.last
 
-    #Test shelter was created
     expect(current_path).to eq("/shelters")
     expect(page).to have_content("Alfredo's Adoption")
     expect(page).to have_link("#{new_shelter.name}", href: "/shelters/#{new_shelter.id}")
@@ -36,7 +37,6 @@ RSpec.describe 'shelters new page' do
 
     Shelter.all.includes(new_shelter)
 
-    #Test shelter can be deleted
     click_on "Delete Shelter"
     !Shelter.all.includes(new_shelter)
   end

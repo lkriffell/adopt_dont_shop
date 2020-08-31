@@ -19,7 +19,21 @@ class SheltersController < ApplicationController
       zip: params[:shelter][:zip]
       })
     shelter.save
-    redirect_to '/shelters'
+    string = ""
+    params[:shelter].each do |param, value|
+      if value == "" && string == ""
+        string = "You must fill in"
+        string += " #{param}"
+      elsif value == ""
+        string += " and #{param}"
+      end
+    end
+    if string == ""
+      redirect_to '/shelters'
+    else
+      flash[:alert] = string
+      redirect_to '/shelters/new'
+    end
   end
 
   def edit
@@ -41,7 +55,9 @@ class SheltersController < ApplicationController
   end
 
   def destroy
-    Shelter.destroy(params[:id])
+    @shelter = Shelter.find(params[:id])
+    @shelter.delete_shelter_references(@shelter.id)
+    @shelter.destroy
     redirect_to '/shelters'
   end
 

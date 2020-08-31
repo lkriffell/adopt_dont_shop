@@ -22,7 +22,7 @@ RSpec.describe 'shelters show page' do
     visit "/shelters/#{@shelter1.id}/pets"
 
     expect(page).to have_content("Up For Adoption At")
-    expect(page).to have_content(Pet.all.count)
+    expect(page).to have_content(@shelter1.pets.count)
     expect(page).to have_content(@shelter1.name)
     expect(page).to have_content(@pet1.name)
     expect(page).to have_content(@pet1.approximate_age)
