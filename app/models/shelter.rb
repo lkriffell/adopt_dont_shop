@@ -14,14 +14,10 @@ class Shelter < ApplicationRecord
 
   def delete_shelter_references(shelter_id)
     reviews = Review.where("shelter_id = #{shelter_id}")
-    reviews.each do |review|
-      review.destroy
-    end
+    reviews.delete_all
     pets.each do |pet|
       app_pets = ApplicationsPets.where("pets_id = #{pet.id}")
-      app_pets.each do |app_pet|
-        app_pet.destroy
-      end
+      app_pets.delete_all
       pet.destroy
     end
   end
@@ -35,7 +31,11 @@ class Shelter < ApplicationRecord
   end
 
   def num_applications(shelter_id)
-    hi = Application.where("shelter_id = #{shelter_id}")
-    require "pry"; binding.pry
+    pet_id = Pet.where("shelter_id = #{shelter_id}").pluck(:id)
+    applications_array = []
+    pet_count = pet_id.each do |id|
+      applications_array << ApplicationsPets.where("pets_id = #{id}")
+    end
+    applications_array.flatten.count
   end
 end
