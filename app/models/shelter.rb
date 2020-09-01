@@ -14,14 +14,10 @@ class Shelter < ApplicationRecord
 
   def delete_shelter_references(shelter_id)
     reviews = Review.where("shelter_id = #{shelter_id}")
-    reviews.each do |review|
-      review.destroy
-    end
+    reviews.delete_all
     pets.each do |pet|
       app_pets = ApplicationsPets.where("pets_id = #{pet.id}")
-      app_pets.each do |app_pet|
-        app_pet.destroy
-      end
+      app_pets.delete_all
       pet.destroy
     end
   end

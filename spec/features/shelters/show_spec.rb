@@ -80,9 +80,8 @@ RSpec.describe 'shelters show page' do
       visit "/shelters/#{@shelter1.id}"
       expect(page).to have_link("Delete Shelter")
       click_link "Delete Shelter"
-      require "pry"; binding.pry
 
-      expect(Pet.all).to eq(nil)
+      expect(Pet.all).to eq([])
     end
   end
 end

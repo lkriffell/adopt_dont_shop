@@ -74,7 +74,6 @@ describe Shelter do
                           adoption_status: "Pending",
                           current_location: "Alfredo's Adoption",
                           shelter_id: "#{@shelter1.id}")
-
       @app1 = Application.create!(name: "John",
                                   address: 21345,
                                   city:"Denver",
@@ -84,10 +83,11 @@ describe Shelter do
                                   description: "I'm the best.")
       @app_pets_1 = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet1.id)
       @app_pets_2 = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet2.id)
+      #require "pry"; binding.pry
 
       @shelter1.delete_shelter_references(@shelter1.id)
 
-      expect(@shelter1.pets).to eq([])
+      expect(Shelter.find("#{@shelter1.id}").pets).to eq([])
     end
   end
 
