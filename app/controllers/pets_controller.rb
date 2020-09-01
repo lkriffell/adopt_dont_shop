@@ -18,7 +18,7 @@ class PetsController < ApplicationController
 
   def flash_helper
     string = ""
-    params[:pet].each do |param, value|
+    params.each do |param, value|
       if value == "" && string == ""
         string = "You must fill in"
         string += " #{param}"
@@ -30,39 +30,25 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new({
-      name: params[:pet][:name],
-      approximate_age: params[:pet][:approximate_age],
-      sex: params[:pet][:sex],
-      adoption_status: params[:pet][:adoption_status],
-      current_location: params[:pet][:current_location],
-      shelter_id: params[:pet][:shelter_id],
-      image: params[:pet][:image]
-      })
-    shelter_id = params[:pet][:shelter_id]
+    @pet = Pet.new(pet_params)
+
     @pet.save
     flash[:alert] = flash_helper
     if flash[:alert] == ""
-      redirect_to "/shelters/#{shelter_id}/pets"
+      redirect_to "/shelters/#{params[:shelter_id]}/pets"
     else
-      redirect_to "/shelters/#{shelter_id}/pets/new"
+      redirect_to "/shelters/#{params[:shelter_id]}/pets/new"
     end
   end
 
   def edit
     @pet = Pet.find(params[:id])
+    @shelter = Shelter.find(@pet.shelter_id)
   end
 
   def update
     @pet = Pet.find(params[:id])
-    @pet.update({
-      name: params[:pet][:name],
-      approximate_age: params[:pet][:approximate_age],
-      sex: params[:pet][:sex],
-      current_location: params[:pet][:current_location],
-      image: params[:pet][:image]
-    })
-    shelter_id = params[:pet][:shelter_id]
+    @pet.update(pet_params)
     @pet.save
     flash[:alert] = flash_helper
     if flash[:alert] == ""
@@ -118,5 +104,10 @@ class PetsController < ApplicationController
       favorite.save!
     end
     redirect_to "/favorites"
+  end
+
+  private
+  def pet_params
+    params.permit(:name, :approximate_age, :sex, :adoption_status, :current_location, :shelter_id, :image)
   end
 end

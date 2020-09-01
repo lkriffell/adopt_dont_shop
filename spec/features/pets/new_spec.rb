@@ -2,8 +2,17 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'new pet' do
   before :each do
-    @shelter1 = Shelter.create!(name: "Alfredo's Adoption", address: "55555",
-      city: "Denver", state: "CO", zip: "34213")
+    ApplicationsPets.delete_all
+    Application.delete_all
+    Pet.delete_all
+    Shelter.delete_all
+
+    @shelter1 = Shelter.create!(name: "Alfredo's Adoption",
+                                address: "55555",
+                                city: "Denver",
+                                state: "CO",
+                                zip: "34213"
+                              )
   end
 
   it 'displays new pet form and creates a pet' do
@@ -13,17 +22,14 @@ RSpec.describe 'new pet' do
     expect(page).to have_content("Approximate Age")
     expect(page).to have_content("Sex")
     expect(page).to have_content("Image")
-    expect(page).to have_content("Status")
-    expect(page).to have_content("Location")
 
-    fill_in :'pet[name]', with: "Jimbo"
-    fill_in :'pet[approximate_age]', with: 2
-    fill_in :'pet[sex]', with: "male"
-    fill_in :'pet[image]', with: "jimbo.jpg"
+    fill_in :name, with: "Jimbo"
+    fill_in :approximate_age, with: 2
+    fill_in :sex, with: "male"
+    fill_in :image, with: "jimbo.jpg"
 
     click_on "Create Pet"
 
-    #Test pet was created
     expect(current_path).to eq("/shelters/#{@shelter1.id}/pets")
     expect(page).to have_content("Jimbo")
     expect(page).to have_content(2)
@@ -32,7 +38,6 @@ RSpec.describe 'new pet' do
 
     Pet.all.includes(Pet.last)
 
-    #Test pet can be deleted
     click_on "Delete Pet"
     !Pet.all.includes(Pet.last)
   end
@@ -40,14 +45,14 @@ RSpec.describe 'new pet' do
   it 'displays flash message when field(s) are missing' do
     visit "/shelters/#{@shelter1.id}/pets/new"
 
-    fill_in :'pet[name]', with: "Jimbo"
-    fill_in :'pet[approximate_age]', with: 2
-    fill_in :'pet[sex]', with: ""
-    fill_in :'pet[image]', with: "jimbo.jpg"
+    fill_in :name, with: "Jimbo"
+    fill_in :approximate_age, with: ""
+    fill_in :sex, with: ""
+    fill_in :image, with: "jimbo.jpg"
 
     click_on "Create Pet"
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}/pets/new")
-    expect(page).to have_content("You must fill in sex")
+    expect(page).to have_content("You must fill in approximate_age and sex")
   end
 end

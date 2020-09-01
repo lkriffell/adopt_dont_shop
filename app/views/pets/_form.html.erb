@@ -1,0 +1,36 @@
+<%= form_tag path, method: method do %>
+  <% if @pet != nil %>
+    <label>Name:</label><br>
+    <%= text_field_tag :name, @pet.name %><br>
+
+    <label>Approximate Age:</label><br>
+    <%= text_field_tag :approximate_age, @pet.approximate_age %><br>
+
+    <label>Sex:</label><br>
+    <%= text_field_tag :sex, @pet.sex %><br>
+
+    <label>Image:</label><br>
+    <%= text_field_tag :image, @pet.image %><br>
+
+    <%= hidden_field_tag :current_location, @shelter.name%>
+    <%= hidden_field_tag :shelter_id, @shelter.id%>
+    <%= hidden_field_tag :adoption_status, "Adoptable" %><br>
+  <% else %>
+    <label>Name:</label><br>
+    <%= text_field_tag :name %><br>
+
+    <label>Approximate Age:</label><br>
+    <%= text_field_tag :approximate_age %><br>
+
+    <label>Sex:</label><br>
+    <%= text_field_tag :sex %><br>
+
+    <label>Image:</label><br>
+    <%= text_field_tag :image %><br>
+
+    <%= hidden_field_tag :current_location, @shelter.name%>
+    <%= hidden_field_tag :shelter_id, @shelter.id%>
+    <%= hidden_field_tag :adoption_status, "Adoptable" %><br>
+  <% end %>
+  <%= submit_tag button_text %><br><br>
+<% end %>
