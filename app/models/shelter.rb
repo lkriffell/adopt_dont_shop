@@ -35,7 +35,11 @@ class Shelter < ApplicationRecord
   end
 
   def num_applications(shelter_id)
-    hi = Application.where("shelter_id = #{shelter_id}")
-    require "pry"; binding.pry
+    pet_id = Pet.where("shelter_id = #{shelter_id}").pluck(:id)
+    applications_array = []
+    pet_count = pet_id.each do |id|
+      applications_array << ApplicationsPets.where("pets_id = #{id}")
+    end
+    applications_array.flatten.count
   end
 end
