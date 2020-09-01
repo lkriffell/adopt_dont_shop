@@ -20,8 +20,7 @@ class PetsController < ApplicationController
     string = ""
     params.each do |param, value|
       if value == "" && string == ""
-        string = "You must fill in"
-        string += " #{param}"
+        string = "You must fill in #{param}"
       elsif value == ""
         string += " and #{param}"
       end
@@ -65,34 +64,30 @@ class PetsController < ApplicationController
 
   def add_favorite
     @pet = Pet.find(params[:id])
-    @pet[:favorite] = true
+    @pet.set_favorite_true
     flash[:notice] = "#{@pet.name} has been added to your favorites list"
-    @pet.save!
+
     redirect_to "/pets/#{@pet.id}"
   end
 
   def show_favorite
     @favorites = Pet.favorited_pets
     @app_pets = ApplicationsPets.all
-    a = []
-    @app_pets.each do |pet|
-      a << pet.pets_id
-    end
-    @ids = a.uniq
+    @ids = @app_pets.map do |pet|
+      pet.pets_id
+    end.uniq
   end
 
   def remove_favorite_from_pets_show
     @pet = Pet.find(params[:id])
-    @pet[:favorite] = false
-    @pet.save!
+    @pet.set_favorite_true
     flash[:notice] = "#{@pet.name} has been removed from your favorites list"
     redirect_to "/pets/#{@pet.id}"
   end
 
   def remove_favorite_from_favorites
     @pet = Pet.find(params[:id])
-    @pet[:favorite] = false
-    @pet.save!
+    @pet.set_favorite_false
     flash[:notice] = "#{@pet.name} has been removed from your favorites list"
     redirect_to "/favorites"
   end
@@ -100,8 +95,7 @@ class PetsController < ApplicationController
   def remove_all_favorites
     @favorites = Pet.favorited_pets
     @favorites.each do |favorite|
-      favorite[:favorite] = false
-      favorite.save!
+      favorite.set_favorite_false
     end
     redirect_to "/favorites"
   end
