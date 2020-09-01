@@ -16,6 +16,19 @@ class PetsController < ApplicationController
     @shelter = Shelter.find(params[:id])
   end
 
+  def flash_helper
+    string = ""
+    params[:pet].each do |param, value|
+      if value == "" && string == ""
+        string = "You must fill in"
+        string += " #{param}"
+      elsif value == ""
+        string += " and #{param}"
+      end
+    end
+    string
+  end
+
   def create
     @pet = Pet.new({
       name: params[:pet][:name],
@@ -28,7 +41,12 @@ class PetsController < ApplicationController
       })
     shelter_id = params[:pet][:shelter_id]
     @pet.save
-    redirect_to "/shelters/#{shelter_id}/pets"
+    flash[:alert] = flash_helper
+    if flash[:alert] == ""
+      redirect_to "/shelters/#{shelter_id}/pets"
+    else
+      redirect_to "/shelters/#{shelter_id}/pets/new"
+    end
   end
 
   def edit
@@ -37,15 +55,21 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:id])
-      @pet.update({
-        name: params[:pet][:name],
-        approximate_age: params[:pet][:approximate_age],
-        sex: params[:pet][:sex],
-        current_location: params[:pet][:current_location],
-        image: params[:pet][:image]
-      })
-      @pet.save!
+    @pet.update({
+      name: params[:pet][:name],
+      approximate_age: params[:pet][:approximate_age],
+      sex: params[:pet][:sex],
+      current_location: params[:pet][:current_location],
+      image: params[:pet][:image]
+    })
+    shelter_id = params[:pet][:shelter_id]
+    @pet.save
+    flash[:alert] = flash_helper
+    if flash[:alert] == ""
       redirect_to "/pets/#{@pet.id}"
+    else
+      redirect_to "/pets/#{@pet.id}/edit"
+    end
   end
 
   def destroy

@@ -516,7 +516,7 @@ Visitors will have additional constraints when manipulating pet data in the data
 
 
 ```
-[ ] done
+[ x ] done
 
 User Story 31, Pets with approved applications cannot be deleted
 
@@ -529,7 +529,7 @@ Either:
 ```
 
 ```
-[ ] done
+[ x ] done
 
 User Story 32, Deleting a pet removes it from favorites
 

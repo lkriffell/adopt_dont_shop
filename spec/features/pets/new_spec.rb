@@ -36,4 +36,18 @@ RSpec.describe 'new pet' do
     click_on "Delete Pet"
     !Pet.all.includes(Pet.last)
   end
+
+  it 'displays flash message when field(s) are missing' do
+    visit "/shelters/#{@shelter1.id}/pets/new"
+
+    fill_in :'pet[name]', with: "Jimbo"
+    fill_in :'pet[approximate_age]', with: 2
+    fill_in :'pet[sex]', with: ""
+    fill_in :'pet[image]', with: "jimbo.jpg"
+
+    click_on "Create Pet"
+
+    expect(current_path).to eq("/shelters/#{@shelter1.id}/pets/new")
+    expect(page).to have_content("You must fill in sex")
+  end
 end

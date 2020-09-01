@@ -1,4 +1,5 @@
 <div class="form">
+  <%= flash[:alert] %>
 <%= form_tag ("/pets/#{@pet.id}") do %>
   <label>Name:</label><br>
   <%= text_field_tag :'pet[name]', @pet.name %><br>
