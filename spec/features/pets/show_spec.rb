@@ -20,7 +20,7 @@ RSpec.describe 'pet show' do
                         approximate_age: "5",
                         sex: "male",
                         image: "elmer.jpg",
-                        adoption_status: "In A Loving Home",
+                        adoption_status: "Pending",
                         current_location: "Alfredo's Adoption",
                         shelter_id: "1")
     @app1 = Application.create!(name: "John",
@@ -31,6 +31,7 @@ RSpec.describe 'pet show' do
                                 phone_number: "234-735-4743",
                                 description: "I'm the best.")
     @app_pets = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet1.id)
+    @app_pets2 = ApplicationsPets.create!(applications_id: @app1.id, pets_id: @pet2.id)
   end
 
   it 'displays pet attributes' do
@@ -154,6 +155,11 @@ RSpec.describe 'pet show' do
   it 'shows link to all applications for the pet' do
     visit "/pets/#{@pet1.id}"
     expect(page).to have_content("Applications for Jimbo")
+  end
+
+  it 'removes delete pet button when application status is pending.' do
+    visit "/pets/#{@pet2.id}"
+    expect(page).to_not have_link("Delete Pet")
   end
 
 end
