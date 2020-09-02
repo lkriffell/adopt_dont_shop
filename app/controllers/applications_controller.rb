@@ -11,7 +11,6 @@ class ApplicationsController < ApplicationController
 
   def submit
     @favorites = Pet.favorited_pets
-    @pets_applied_for = ""
     if  @favorites == []
       flash[:alert] = "You have no current favorites to apply for!"
       redirect_to '/favorites'
@@ -19,26 +18,36 @@ class ApplicationsController < ApplicationController
       flash[:alert] = "You must complete the form in order to submit the application"
       redirect_to '/favorites/apply'
     elsif params[:checked_pets] != nil
-      params[:checked_pets].each do |pet_id|
-        pet = Pet.get_pet_by_id(pet_id)
-        pet[:favorite] = false
-        pet.save!
-        if @pets_applied_for == ""
-          @pets_applied_for += pet.name
-        else
-          @pets_applied_for += " and #{pet.name}"
-        end
-      end
-      new_app = Application.create!(application_params)
-      params[:checked_pets].each do |pet_id|
-        ApplicationsPets.create!({applications_id: new_app.id, pets_id: pet_id})
-      end
+      @pets_applied_for = check_params_for_empties
+      create_app_and_app_pets
       flash[:notice] = "Your application for #{@pets_applied_for} has been submitted!"
       redirect_to '/favorites'
     else
       flash[:alert] = "You must select a pet to apply for."
       redirect_to '/favorites/apply'
     end
+  end
+
+  def create_app_and_app_pets
+    new_app = Application.create!(application_params)
+    params[:checked_pets].each do |pet_id|
+      ApplicationsPets.create!({applications_id: new_app.id, pets_id: pet_id})
+    end
+  end
+
+  def check_params_for_empties
+    @pets_applied_for = ""
+    params[:checked_pets].each do |pet_id|
+      pet = Pet.get_pet_by_id(pet_id)
+      pet[:favorite] = false
+      pet.save!
+      if @pets_applied_for == ""
+        @pets_applied_for += pet.name
+      else
+        @pets_applied_for += " and #{pet.name}"
+      end
+    end
+    @pets_applied_for
   end
 
   def approve
