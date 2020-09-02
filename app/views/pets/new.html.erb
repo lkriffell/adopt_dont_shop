@@ -1,27 +1,7 @@
 <div class="form">
-  <%= flash[:alert] %>
-  <%= form_tag ('/pets') do %>
-    <label>Name:</label><br>
-    <%= text_field_tag :'pet[name]' %><br>
-
-    <label>Approximate Age:</label><br>
-    <%= text_field_tag :'pet[approximate_age]' %><br>
-
-    <label>Sex:</label><br>
-    <%= text_field_tag :'pet[sex]' %><br>
-
-    <label>Image:</label><br>
-    <%= text_field_tag :'pet[image]' %><br>
-
-    <label>Status:</label><br>
-    <%= text_field_tag :'pet[adoption_status]', "Adoptable" %><br>
-
-    <label>Location:</label><br>
-    <%= text_field_tag :'pet[current_location]', @shelter.name%><br>
-
-    <label>Shelter ID:</label><br>
-    <%= text_field_tag :'pet[shelter_id]', @shelter.id%><br><br>
-
-    <%= submit_tag "Create Pet" %><br><br>
-  <% end %>
+  <%= render partial: 'form', locals: {
+                                      path: "/pets",
+                                      method: :post,
+                                      button_text: "Create Pet"
+                                      } %>
 </div>

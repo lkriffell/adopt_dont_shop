@@ -83,12 +83,6 @@ RSpec.describe 'pet application' do
       page.check "checked_pets[]"
     end
 
-    fill_in :name, with: "John"
-    fill_in :address, with: 21345
-    fill_in :city, with: "Denver"
-    fill_in :state, with: "CO"
-    fill_in :zip, with: 80025
-    fill_in :phone_number, with: "234-735-4743"
     fill_in :description, with: ""
 
     click_on 'Submit Application'

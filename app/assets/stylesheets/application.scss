@@ -23,11 +23,11 @@
  div#borderimg{
    border-width: 50px;
    border-style: solid;
-   border-image: url(https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/3/fenced-into-seattle-matt-mcdonald.jpg) 30 round;
+   border-image: url(https://media.giphy.com/media/3oEdv1GbekAakxXO8g/giphy.gif) 30 round;
  }
 
  .nav{
-   color: #eb67bf;
+   /* color: #eb67bf; */
    background-color: pink;
    list-style-type: none;
    margin: 5px;
@@ -45,7 +45,7 @@
  }
 
  img:hover {
-   background: url(https://media3.giphy.com/media/f4Oy5PZNQz5q7dbAIp/200w.webp);
+   background: url(https://media.giphy.com/media/3oEdv1GbekAakxXO8g/giphy.gif);
  }
 
  img{
@@ -53,6 +53,8 @@
    border-radius: 8px;
    padding: 5px;
    width: 250px;
+   height: 250px;
+   object-fit: cover;
  }
 
  .pet {

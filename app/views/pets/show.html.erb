@@ -1,6 +1,6 @@
 
   <% if @pet.adoption_status == "Pending" %>
-  <h3>On hold for <%= @app.name %></h3>
+  <h3>On hold for <%= link_to @app.name, "/applications/#{@app.id}" %></h3>
   <% end %>
   <div class="dropdown">
     <h4>Applications for <%= @pet.name %></h4>
@@ -40,6 +40,6 @@
 
   <h4><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h4>
   <% if @pet.adoption_status != "Pending" %>
-  <%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %><br>
+    <%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %><br>
   <% end %>
 </div>
