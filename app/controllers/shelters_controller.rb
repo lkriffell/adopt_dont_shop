@@ -11,16 +11,10 @@ class SheltersController < ApplicationController
   end
 
   def create
-    shelter = Shelter.new({
-      name: params[:shelter][:name],
-      address: params[:shelter][:address],
-      city: params[:shelter][:city],
-      state: params[:shelter][:state],
-      zip: params[:shelter][:zip]
-      })
+    shelter = Shelter.new(shelter_params)
     shelter.save
     string = ""
-    params[:shelter].each do |param, value|
+    params.each do |param, value|
       if value == "" && string == ""
         string = "You must fill in"
         string += " #{param}"
@@ -41,15 +35,8 @@ class SheltersController < ApplicationController
   end
 
   def update
-    @shelter = Shelter.find(params[:shelter][:id])
-
-      @shelter.update({
-        name: params[:shelter][:name],
-        address: params[:shelter][:address],
-        city: params[:shelter][:city],
-        state: params[:shelter][:state],
-        zip: params[:shelter][:zip]
-      })
+    @shelter = Shelter.find(params[:id])
+    @shelter.update(shelter_params)
     @shelter.save
     redirect_to "/shelters/#{@shelter.id}"
   end
@@ -68,4 +55,10 @@ class SheltersController < ApplicationController
       pet.shelter_id == @shelter.id
     end
   end
+
+  private
+  def shelter_params
+   params.permit(:name, :address, :city, :state, :zip)
+  end
+
 end
