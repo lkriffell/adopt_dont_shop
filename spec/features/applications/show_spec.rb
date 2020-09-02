@@ -55,14 +55,6 @@ RSpec.describe 'pet applications show page' do
     expect(current_path).to eq("/pets/#{@pet1.id}")
   end
 
-  it 'displays message when no apps are present' do
-
-    visit "/pets/#{@pet2.id}"
-
-    # Not sure how to test this with a dropdown menu
-    # expect(page).to have_content("There are no current applications for this pet.")
-  end
-
   it 'can approve application for more than one pet' do
 
     visit "/pets/#{@pet1.id}"
@@ -99,7 +91,6 @@ RSpec.describe 'pet applications show page' do
       page.check "checked_pets[]"
     end
 
-
     click_on "Approve Application"
 
     expect(current_path).to eq("/applications/#{@app1.id}")
@@ -112,7 +103,4 @@ RSpec.describe 'pet applications show page' do
     expect(page).to_not have_link("Revoke Application")
     expect(@pet1.adoption_status).to eq("Adoptable")
   end
-
-
-
 end
