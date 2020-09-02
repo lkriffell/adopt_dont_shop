@@ -1,8 +1,12 @@
 require 'spec_helper'
 require 'rails_helper'
-# Before each for setup
 RSpec.describe 'pets index' do
   before :each do
+    ApplicationsPets.delete_all
+    Application.delete_all
+    Pet.delete_all
+    Shelter.delete_all
+
     @shelter1 = Shelter.create!(name: "Alfredo's Adoption",
                                 address: "55555",
                                 city: "Denver",

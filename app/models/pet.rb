@@ -20,4 +20,14 @@ class Pet < ApplicationRecord
   def self.get_pet_by_id(id)
     find(id)
   end
+
+  def set_favorite_true
+    self[:favorite] = true
+    self.save
+  end
+
+  def set_favorite_false
+    self[:favorite] = false
+    self.save
+  end
 end

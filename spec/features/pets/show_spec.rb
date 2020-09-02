@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'rails_helper'
-# Before each for setup
 RSpec.describe 'pet show' do
   before :each do
     @shelter1 = Shelter.create!(name: "Alfredo's Adoption",

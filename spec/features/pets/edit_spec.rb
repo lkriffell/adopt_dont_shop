@@ -1,9 +1,6 @@
 require 'spec_helper'
 require 'rails_helper'
-# Before each for setup
 RSpec.describe 'pets edit page' do
-  before :each do
-  end
 
   it 'displays edit pet form' do
     @shelter1 = Shelter.create!(name: "Alfredo's Adoption", address: "55555",
@@ -30,10 +27,10 @@ RSpec.describe 'pets edit page' do
     image = "jimbo.jpg"
 
     visit "/pets/#{@pet1.id}/edit"
-    fill_in :'pet[name]', with: name
-    fill_in :'pet[approximate_age]', with: approximate_age
-    fill_in :'pet[image]', with: image
-    fill_in :'pet[sex]', with: sex
+    fill_in :name, with: name
+    fill_in :approximate_age, with: approximate_age
+    fill_in :image, with: image
+    fill_in :sex, with: sex
 
     click_on "Update Pet"
 
@@ -54,10 +51,10 @@ RSpec.describe 'pets edit page' do
 
     visit "/pets/#{@pet1.id}/edit"
 
-    fill_in :'pet[name]', with: "Jimbo"
-    fill_in :'pet[approximate_age]', with: 2
-    fill_in :'pet[sex]', with: ""
-    fill_in :'pet[image]', with: "jimbo.jpg"
+    fill_in :name, with: "Jimbo"
+    fill_in :approximate_age, with: 2
+    fill_in :sex, with: ""
+    fill_in :image, with: "jimbo.jpg"
 
     click_on "Update Pet"
 
