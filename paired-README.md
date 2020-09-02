@@ -496,7 +496,7 @@ I see a flash message indicating which field(s) I am missing
 ```
 
 ```
-[ ] done
+[ x ] done
 
 User Story 30, Shelter Statistics
 
@@ -575,7 +575,7 @@ It is a link to their show page
 ```
 
 ```
-[ ] done
+[ x ] done
 
 User Story 36, All Applicant Names are links to that Applicant's application
 
