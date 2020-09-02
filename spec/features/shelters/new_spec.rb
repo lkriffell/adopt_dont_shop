@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'rails_helper'
-# Before each for setup
+
 RSpec.describe 'shelters new page' do
   before :each do
     ApplicationsPets.delete_all
@@ -17,12 +17,11 @@ RSpec.describe 'shelters new page' do
     expect(page).to have_content("state")
     expect(page).to have_content("zip")
 
-    fill_in :'shelter[name]', with: "Alfredo's Adoption"
-    fill_in :'shelter[address]', with: 55837
-    fill_in :'shelter[city]', with: "Denver"
-    fill_in :'shelter[state]', with: "CO"
-    fill_in :'shelter[zip]', with: 34521
-
+    fill_in :name, with: "Alfredo's Adoption"
+    fill_in :address, with: "55837"
+    fill_in :city, with: "Denver"
+    fill_in :state, with: "CO"
+    fill_in :zip, with: 34521
 
     click_on "Create Shelter"
 
