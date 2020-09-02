@@ -10,7 +10,12 @@
     <h3>State: <%= @shelter.state%></h3>
     <h3>Zip: <%= @shelter.zip %></h3>
     <h3>Pets at Location: <%= @shelter.pet_count %></h3>
-    <h3>Average Rating: <%= @shelter.average_review(@shelter.id) %></h3>
+    <% if @shelter.average_review(@shelter.id) != nil %>
+      <h3>Average Rating: <%= @shelter.average_review(@shelter.id) %></h3>
+    <% else %>
+      <h3>Average Rating: No Ratings Yet</h3>
+    <% end %>
+
     <h3>Number of Applications: <%= @shelter.num_applications(@shelter.id) %></h3>
 
 
