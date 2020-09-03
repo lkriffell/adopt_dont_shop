@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index'
+  get '/users/new', to: 'users#new'
+  post "/users", to: "users#create"
+  get '/profile', to: 'users#show'
+  get '/login', to: 'sessions#new'
+  get '/logout', to: 'sessions#delete'
+  post '/login', to: 'sessions#create'
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
   post '/shelters', to: 'shelters#create'

@@ -12,11 +12,13 @@
   </head>
   <div id="borderimg">
     <ul class="nav">
+      <div class="navname">
+        <h3 id="username"><%= User.find(session[:user_id]).username %></h3>
+      </div>
       <li class="navlink"><h3><%= link_to 'Pet Index', '/pets' %></h3></li>
       <li class="navlink"><h3><%= link_to 'Shelter Index', '/shelters' %></h3></li>
       <li class="navlink"><h3><%= link_to "Favorites: #{Pet.favorited_pets_count}", '/favorites' %></h3></li>
     </ul>
-
 
   <body>
     <% flash.each do |type, message| %>
